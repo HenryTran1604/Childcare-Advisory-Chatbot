@@ -46,3 +46,9 @@ class DAO:
 
         backward_rules = [Rule(x[0], d[x], x[1]) for x in d]
         return backward_rules
+    
+    def find_all_symtoms_by_reason(self, reason_id):
+        stm = 'SELECT DISTINCT id_antecedent_fact FROM inference WHERE id_consequent_fact=%s'
+        self.cursor.execute(stm, (reason_id,))
+        result = self.cursor.fetchall()
+        return set(x[0] for x in result)
