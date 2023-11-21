@@ -1,10 +1,148 @@
 from forward_chaining import ForwardChaining
-symp = []
-for i in range(5):
-    x = int(input("Nhập triệu chứng: "))
-    symp.append(f'SY{x}')
+from backward_chaining import BackwardChaining
+from dao import DAO
+from classification import classify
+from helper import *
 
-fc = ForwardChaining()
-print(fc.forward_chaining(symp))
+class Validation:
+    def __init__(self) -> None:
+        pass
+
+    def validate_number(self, datatype, value):
+        try:
+            target_value = datatype(value)
+            return target_value
+        except:
+            return None
+
+    def validate_numberic_answer(self, datatype, answer):
+        pass
 
 
+class Main:
+    def __init__(self) -> None:
+        dao = DAO()
+        self.facts = dao.find_all_facts()
+        self.current_problems = []
+        self.age = 0
+        self.weight = 0
+        self.height = 0
+        self.gender = None
+        self.username = '>>>TÔI     :'
+        self.chatbot =  '>>>CHATBOT :'
+
+    def greeting(self):
+        pass
+
+    def gender_question(self):
+        chatbot_print(
+            f"{self.chatbot} Con của bạn là bé trai hay bé gái? (1 - bé trai, 0 - bé gái)"
+        )
+        self.gender = int(input())
+        user_print(f'{self.username} Con tôi là {"con trai" if self.gender == 1 else "con gái"}')
+
+    def age_question(self):
+        question = f"{self.chatbot} Con bạn bao nhiêu tháng tuổi? (Nhập 1 số từ 1 đến 24)"
+        chatbot_print(question)
+        self.age = int(input())
+        if 0 <= self.age < 1:
+            period = "P1"
+        elif 1 <= self.age < 2:
+            period = "P2"
+        elif 2 <= self.age < 4:
+            period = "P3"
+        elif 4 <= self.age < 6:
+            period = "P4"
+        elif 6 <= self.age < 7:
+            period = "P5"
+        elif 7 <= self.age < 9:
+            period = "P6"
+        elif 9 <= self.age < 12:
+            period = "P7"
+        else:
+            period = "P8"
+        user_print(f"{self.username} Con tôi {self.age} tháng tuổi, [{self.facts[period]}]")
+
+        self.current_problems.append(period)
+
+    def height_weight_question(self):
+        height_question = f"{self.chatbot} Con của bạn có chiều cao là bao nhiêu cm?"
+        chatbot_print(height_question)
+        self.height = float(input())
+        user_print(f"{self.username} Con tôi cao {self.height} cm")
+        weight_question = f"{self.chatbot} Con của bạn có cân nặng là bao nhiêu (kg)?"
+        chatbot_print(weight_question)
+        self.weight = float(input())
+        user_print(f"{self.username} Con tôi nặng {self.weight} kg")
+        self.current_problems.append(
+            classify(self.gender, self.age, self.height, self.weight)
+        )
+
+    def __ask(self, question_keys):
+        cnt = 0
+        while cnt < len(question_keys):
+            chatbot_print(f"{self.chatbot} Con của bạn có dấu hiệu nào trong các đặc điểm sau hay không?")
+            for i, key in enumerate(question_keys):
+                if key not in self.current_problems:
+                    options_print(f"      \t{i + 1}: {self.facts[key]}")
+            options_print("      \t0. Con tôi không có triệu chứng nào ở trên")
+            ans = int(input())
+            if ans == 0:
+                user_print(f'{self.username} Con tôi không có dấu hiệu nào kể trên')
+                break
+            user_print(f"{self.username} Con tôi có dấu hiệu: {self.facts[question_keys[ans - 1]]}")
+
+            self.current_problems.append(question_keys[ans - 1])
+            cnt += 1
+
+    def health_question(self):
+        chatbot_print(f"{self.chatbot} Chúng tôi muốn biết tình trạng về **SỨC KHỎE** hiện tại của con bạn")
+        health_symptom_keys = ["SY2", "SY11", "SY43"]
+        self.__ask(health_symptom_keys)
+
+    def skin_question(self):
+        chatbot_print(f"{self.chatbot} Chúng tôi muốn biết tình trạng về **DA** hiện tại của con bạn")
+        skin_symptom_keys = ["SY5", "SY6", "SY7", "SY41"]
+        self.__ask(skin_symptom_keys)
+
+    def sleep_question(self):
+        chatbot_print(f"{self.chatbot} Chúng tôi muốn biết tình trạng về **GIẤC NGỦ** hiện tại của con bạn")
+        sleep_symptom_keys = ["SY13", "SY14"]
+        self.__ask(sleep_symptom_keys)
+
+    def digest_question(self):
+        chatbot_print(f"{self.chatbot} Chúng tôi muốn biết tình trạng về **TIÊU HÓA** hiện tại của con bạn")
+        digest_symptom_keys = ["SY18", "SY33", "SY40"]
+        self.__ask(digest_symptom_keys)
+
+    def respiratory_question(self):
+        chatbot_print(f"{self.chatbot} Chúng tôi muốn biết tình trạng về **TIÊU HÓA** hiện tại của con bạn")
+        respiratory_symp_keys = ["SY19", "SY29"]
+        self.__ask(respiratory_symp_keys)
+
+    def vision_question(self):
+        chatbot_print(f"{self.chatbot} Chúng tôi muốn biết tình trạng về **THỊ GIÁC** hiện tại của con bạn")
+        vision_symp_keys = ["SY28", "SY28", "SY30", "SY15"]
+        self.__ask(vision_symp_keys)
+
+    def predict(self):
+        self.greeting()
+        self.gender_question()
+        self.age_question()
+        self.height_weight_question()
+        self.health_question()
+        self.skin_question()
+        self.sleep_question()
+        self.digest_question()
+        self.respiratory_question()
+        self.vision_question()
+        fc = ForwardChaining()
+        predict_reasons = [x for x in fc.forward_chaining(self.current_problems)[2] if x[:2] == 'RS']
+        advices = [x for x in fc.forward_chaining(self.current_problems)[2] if x[0] == 'A']
+        print(*predict_reasons, sep='\n')
+        print(*advices, sep="\n")
+    def confirm(self):
+        pass
+
+main = Main()
+main.predict()

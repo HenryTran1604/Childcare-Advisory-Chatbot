@@ -1,4 +1,11 @@
-out = open('out.txt', 'w')
-for i in range(1, 213):
-    pi = 0 if i < 49 else 1
-    out.write(f"('RU{i}', {pi}),\n")
+from colorama import Fore, Back, Style, init
+
+# Khởi tạo Colorama
+init()
+
+# In ra một dòng màu
+print(f"{Fore.RED}This is red text{Style.RESET_ALL}")
+
+# In ra một dòng khác
+print(f"{Fore.BLUE}This is blue text{Style.RESET_ALL}")
+print('normal')

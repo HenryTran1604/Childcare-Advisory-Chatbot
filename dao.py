@@ -14,7 +14,10 @@ class DAO:
         stm = "SELECT * FROM fact"
         self.cursor.execute(stm)
         facts = self.cursor.fetchall()
-        return facts
+        d_facts = dict()
+        for fact in facts:
+            d_facts[fact[0]] = fact[1]
+        return d_facts
     
     def find_all_by_id_containing(self, key):
         stm = f"SELECT * FROM fact WHERE id_fact LIKE '{key}%'"
