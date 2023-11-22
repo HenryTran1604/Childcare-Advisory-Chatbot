@@ -153,7 +153,7 @@ class Main:
         if len(predict_reasons):
             chatbot_print('Một cách chi tiết hơn, chúng tôi thấy con bạn có thể đang gặp các tình trạng sau:')
             for reason in predict_reasons:
-                chatbot_print2(f'[reason] {self.facts[reason]}')
+                chatbot_print2(f'[{reason}] {self.facts[reason]}')
             self.current_problems = others
             return predict_reasons
     

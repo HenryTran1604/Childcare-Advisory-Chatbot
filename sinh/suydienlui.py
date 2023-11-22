@@ -2,7 +2,7 @@ import re
 f = open('sinh/src_lui.txt', 'r')
 out = open('sinh/out_lui.txt', 'w')
 
-cnt1, cnt2 = 65, 40
+cnt1, cnt2 = 65, 39
 for line in f.readlines():
     s = re.split(r',|\t', line.strip())
     print(s)
