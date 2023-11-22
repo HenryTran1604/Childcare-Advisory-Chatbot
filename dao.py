@@ -52,3 +52,4 @@ class DAO:
         self.cursor.execute(stm, (reason_id,))
         result = self.cursor.fetchall()
         return set(x[0] for x in result)
+    

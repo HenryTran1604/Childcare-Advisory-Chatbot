@@ -104,7 +104,7 @@ class Main:
 
     def skin_question(self):
         chatbot_print("Chúng tôi muốn biết tình trạng về **DA** hiện tại của con bạn")
-        skin_symptom_keys = ["SY5", "SY6", "SY7", "SY41"]
+        skin_symptom_keys = ["SY5", "SY6", "SY41"]
         self.__ask(skin_symptom_keys)
 
     def sleep_question(self):
@@ -140,6 +140,7 @@ class Main:
         self.vision_question()
         fc = ForwardChaining()
         problems = fc.forward_chaining(self.current_problems)[2]
+        fc.write('FC')
         others, predict_reasons = [], []
         status = ''
         for x in problems:
@@ -202,6 +203,7 @@ class Main:
     def give_advices(self):
         advices = []
         bc = BackwardChaining()
+        print(self.current_problems)
         for i in range(1, 50):
             if bc.backward_chaining(self.current_problems, f'A{i}'):
                 advices.append(f'A{i}')
