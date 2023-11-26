@@ -1,7 +1,8 @@
 from forward_chaining import ForwardChaining
 from backward_chaining import BackwardChaining
 from dao import DAO
-from classification import classify
+#from classification import classify
+from fuzzy import caculate
 from helper import *
 
 class Validation:
@@ -34,16 +35,28 @@ class Main:
         pass
 
     def gender_question(self):
-        chatbot_print(
-            "Con của bạn là bé trai hay bé gái? (1 - bé trai, 0 - bé gái)"
-        )
-        self.gender = int(input())
-        user_print(f'Con tôi là {"con trai" if self.gender == 1 else "con gái"}')
+        chatbot_print("Giới tính con của bạn là gì? Cháu bao nhiêu tháng tuổi rồi?")
+        # con tôi là con yyy. Cháu đã xx tháng tuổi rồi
+        response = input()
+        check = 0
+        if 'trai' in response or 'nam' in response:
+            self.gender = 1
+            check = 1
+        elif 'gái' in response or 'nữ' in response:
+            self.gender = 0
+            check = 1
+        s = response.split()
+        for x in s:
+            if x.isnumeric():
+                self.age = int(x)
+                self.identify_period()
+                check = 2
+        if check < 2:
+            chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
+        else:
+            user_print(response)
 
-    def age_question(self):
-        question = "Con bạn bao nhiêu tháng tuổi? (Nhập 1 số từ 1 đến 24)"
-        chatbot_print(question)
-        self.age = int(input())
+    def identify_period(self):
         if 0 <= self.age < 1:
             period = "P1"
         elif 1 <= self.age < 2:
@@ -60,22 +73,28 @@ class Main:
             period = "P7"
         else:
             period = "P8"
-        user_print(f"Con tôi {self.age} tháng tuổi, [{self.facts[period]}]")
-
         self.current_problems.append(period)
 
     def height_weight_question(self):
-        height_question = "Con của bạn có chiều cao là bao nhiêu cm?"
-        chatbot_print(height_question)
-        self.height = float(input())
-        user_print(f"Con tôi cao {self.height} cm")
-        weight_question = "Con của bạn có cân nặng là bao nhiêu (kg)?"
-        chatbot_print(weight_question)
-        self.weight = float(input())
-        user_print(f"Con tôi nặng {self.weight} kg")
-        self.current_problems.append(
-            classify(self.gender, self.age, self.height, self.weight)
-        )
+        question = "Con của bạn có chiều cao (cm), cân nặng (kg) là bao nhiêu? (Vui lòng nhập đúng thứ tự và đơn vị)"
+        # con tôi nặng xx kg và cao yy cm
+        chatbot_print(question)
+        response = input()
+        s, cnt = response.split(), 0
+        for x in s:
+            if x.isnumeric():
+                if self.height == 0:
+                    cnt += 1
+                    self.height = int(x)
+                else:
+                    cnt += 1
+                    self.weight = int(x)
+        if cnt == 2:
+            user_print(f"Con tôi cao {self.height} cm và có cân nặng {self.weight} kg")
+            self.current_problems.append(caculate(self.gender, self.age, self.weight, self.height))
+#            print(self.facts[self.current_problems[-1]])
+        else:
+            chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
 
     def __ask(self, question_keys):
         cnt = 0
@@ -118,7 +137,7 @@ class Main:
         self.__ask(digest_symptom_keys)
 
     def respiratory_question(self):
-        chatbot_print("Chúng tôi muốn biết tình trạng về **TIÊU HÓA** hiện tại của con bạn")
+        chatbot_print("Chúng tôi muốn biết tình trạng về **HÔ HẤP** hiện tại của con bạn")
         respiratory_symp_keys = ["SY19", "SY29"]
         self.__ask(respiratory_symp_keys)
 
@@ -130,13 +149,12 @@ class Main:
     def predict(self):
         self.greeting()
         self.gender_question()
-        self.age_question()
         self.height_weight_question()
         self.health_question()
         self.skin_question()
         self.sleep_question()
         self.digest_question()
-        self.respiratory_question()
+        # self.respiratory_question()
         self.vision_question()
         fc = ForwardChaining()
         problems = fc.forward_chaining(self.current_problems)[2]

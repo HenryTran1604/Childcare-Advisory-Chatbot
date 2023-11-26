@@ -53,3 +53,15 @@ class DAO:
         result = self.cursor.fetchall()
         return set(x[0] for x in result)
     
+    def find_all_std_weight_height(self):
+        stm = 'SELECT * FROM std_weight_height'
+        self.cursor.execute(stm)
+        result = self.cursor.fetchall()
+        std_weight_heights = [[x for x in r] for r in result]
+        return std_weight_heights
+    
+    def find_std_weight_height_by_age_and_gender(self, gender, age):
+        stm = 'SELECT * FROM std_weight_height WHERE gender = %s AND age=%s'
+        self.cursor.execute(stm, (gender, age))
+        result = self.cursor.fetchone()
+        return list(result)

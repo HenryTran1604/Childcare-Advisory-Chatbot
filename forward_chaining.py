@@ -8,7 +8,7 @@ class ForwardChaining:
 
     def forward_chaining(self, facts):
         self.log_rules_facts(facts)
-        self.log += 'II. INFERENCE\n'
+        self.log += '\nII. INFERENCE\n'
         road = []
         i, pos = 1, len(facts)
         while i:
@@ -56,6 +56,7 @@ class ForwardChaining:
         for fact in facts:
             self.log += fact + ", "
     def log_result(self, facts, road):
+        self.log += '----------------------------------------------------\n'
         self.log += f'Facts sau khi suy diễn: {", ".join(facts)}\n'
         self.log += f'Những luật được áp dụng: {", ".join(road)}\n'
 
