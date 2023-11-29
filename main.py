@@ -37,7 +37,6 @@ class Main:
         self.height_weight_question()
 
     def issue_resolution_module(self): # giải quyết vấn dề sức khỏe
-        self.predict()
         self.confirm()
 
     def greeting(self):
@@ -160,9 +159,6 @@ class Main:
         self.__ask(vision_symp_keys)
 
     def predict(self):
-        self.greeting()
-        self.gender_question()
-        self.height_weight_question()
         self.health_question()
         self.skin_question()
         self.sleep_question()
@@ -247,9 +243,9 @@ class Main:
         chatbot_print('hỏi về các vấn đề sức khỏe?')
         ans = int(input())
         if ans == 1:
-            self.predict()
-            self.confirm()
-        self.give_advices()
+            self.issue_resolution_module()
+        else:
+            self.give_advices()
 
 
 main = Main()
