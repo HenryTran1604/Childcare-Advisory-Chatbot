@@ -16,44 +16,48 @@ def find_coeff(h, k):
 
 def fuzzificate(gender, age, weight, height): # mờ hóa
     std = DAO().find_std_weight_height_by_age_and_gender(gender, age)
-
+    sd1, sd2 = (std[3] - std[2])/2, (std[4] - std[3])/2
+    p = [std[2], std[2] + sd1 / 2, std[3] + sd2 / 2, std[4]]
+    print(p)
     weight_fuzzy = FuzzyPercent()
     
-    if weight < std[2]:
+    if weight < p[0]:
         weight_fuzzy.low = 1
-    elif weight <= std[3]:
-        print('2')
-        #
-        a_low, b_low = find_coeff(std[2], std[3])
+    elif weight <= p[1]:
+        a_low, b_low = find_coeff(p[0], p[1])
         weight_fuzzy.low = a_low * weight + b_low
-        a_mid, b_mid = find_coeff(std[3], std[2])
+        a_mid, b_mid = find_coeff(p[1], p[0])
         weight_fuzzy.mid = a_mid * weight + b_mid
-    elif weight <= std[4]:
-        print(std[4])
-        a_mid, b_mid = find_coeff(std[3], std[4])
+    elif weight <= p[2]:
+        weight_fuzzy.mid = 1
+    elif weight <= p[3]:
+        a_mid, b_mid = find_coeff(p[2], std[3])
         weight_fuzzy.mid = a_mid * weight + b_mid
-        a_high, b_high = find_coeff(std[4], std[3])
+        a_high, b_high = find_coeff(p[3], p[2])
         weight_fuzzy.high = a_high * weight + b_high
     else:
         weight_fuzzy.high = 1
-    
+
+    sd3, sd4 = (std[6] - std[5])/2, (std[7] - std[6])/2
+    q = [std[5], std[5] + sd3 / 2, std[6] + sd4 / 2, std[7]]
     height_fuzzy = FuzzyPercent()
-    if height < std[5]:
+    if height < q[0]:
         height_fuzzy.low = 1
-    elif height <= std[6]:
-        #
-        a_low, b_low = find_coeff(std[5], std[6])
+    elif height <= q[1]:
+        a_low, b_low = find_coeff(q[0], q[1])
         height_fuzzy.low = a_low * height + b_low
-        a_mid, b_mid = find_coeff(std[6], std[5])
+        a_mid, b_mid = find_coeff(q[1], q[0])
         height_fuzzy.mid = a_mid * height + b_mid
-    elif height <= std[7]:
-        a_mid, b_mid = find_coeff(std[6], std[7])
+    elif height <= q[2]:
+        height_fuzzy.mid = 1
+    elif height <= q[3]:
+        a_mid, b_mid = find_coeff(q[2], q[3])
         height_fuzzy.mid = a_mid * height + b_mid
-        a_high, b_high = find_coeff(std[7], std[6])
+        a_high, b_high = find_coeff(q[3], q[2])
         height_fuzzy.high = a_high * height + b_high
     else:
         height_fuzzy.high = 1
-    print(weight_fuzzy, height_fuzzy)
+    # print(weight_fuzzy, height_fuzzy)
     return weight_fuzzy, height_fuzzy
 
 def caculate(gender, age, weight, height):

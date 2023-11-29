@@ -30,6 +30,15 @@ class Main:
         self.weight = 0
         self.height = 0
         self.gender = None
+        self.basic_info = False
+
+    def consult_nutrition_module(self): # tư vấn dinh dưỡng
+        self.gender_question()
+        self.height_weight_question()
+
+    def issue_resolution_module(self): # giải quyết vấn dề sức khỏe
+        self.predict()
+        self.confirm()
 
     def greeting(self):
         pass
@@ -82,16 +91,20 @@ class Main:
         response = input()
         s, cnt = response.split(), 0
         for x in s:
-            if x.isnumeric():
+            try:
+                x = float(x)
                 if self.height == 0:
                     cnt += 1
-                    self.height = int(x)
+                    self.height = float(x)
                 else:
                     cnt += 1
-                    self.weight = int(x)
+                    self.weight = float(x)
+            except:
+                pass
         if cnt == 2:
             user_print(f"Con tôi cao {self.height} cm và có cân nặng {self.weight} kg")
             self.current_problems.append(caculate(self.gender, self.age, self.weight, self.height))
+            self.basic_info = True
 #            print(self.facts[self.current_problems[-1]])
         else:
             chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
@@ -215,8 +228,6 @@ class Main:
                 return
         self.give_advices()
 
-    def confirm2(self):
-        pass
 
     def give_advices(self):
         advices = []
@@ -231,9 +242,16 @@ class Main:
             chatbot_print2(self.facts[advice])
 
     def run(self):
-        self.predict()
-        self.confirm()
+        self.consult_nutrition_module()
+        chatbot_print('Bạn có muốn nhận lời tư vấn dinh dưỡng luôn hay muốn tiếp tục')
+        chatbot_print('hỏi về các vấn đề sức khỏe?')
+        ans = int(input())
+        if ans == 1:
+            self.predict()
+            self.confirm()
+        self.give_advices()
 
 
 main = Main()
-main.confirm()
+main.run()
+# main.confirm()
