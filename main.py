@@ -189,7 +189,7 @@ class Main:
         predict_reasons = self.predict()
         bc = BackwardChaining()
         asked_symptoms = set()
-        for reason in predict_reasons:
+        for i, reason in enumerate(predict_reasons):
             result = bc.backward_chaining(self.current_problems, reason)
             if result:
                 print(f'Chúng tôi đã có kết luận, con bạn đã bị {self.facts[symp]}')
@@ -217,7 +217,8 @@ class Main:
                     user_print('Không')
             if not found:
                 chatbot_print(f'Có vẻ con bạn không bị [{reason}] {self.facts[reason]}')
-            chatbot_print('Bạn có muốn tiếp tục suy luận hay muốn nhận lời khuyên? (1 - tiếp tục, 0 - nhận lời khuyên)')
+            if i < len(predict_reasons) - 1:
+                chatbot_print('Bạn có muốn tiếp tục suy luận hay muốn nhận lời khuyên? (1 - tiếp tục, 0 - nhận lời khuyên)')
             tmp = int(input())
             if tmp == 0:
                 self.give_advices()
