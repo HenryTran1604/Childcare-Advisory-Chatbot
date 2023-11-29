@@ -66,7 +66,7 @@ def caculate(gender, age, weight, height):
     st1_percent = max(min(weight_fuzzy.low, height_fuzzy.mid), min(weight_fuzzy.low, height_fuzzy.high))
     st2_percent = min(weight_fuzzy.mid, height_fuzzy.low)
     st3_percent = min(weight_fuzzy.low, height_fuzzy.low)
-    st4_percent = max(min(weight_fuzzy.mid, height_fuzzy.mid), min(weight_fuzzy.mid, weight_fuzzy.high))
+    st4_percent = max(min(weight_fuzzy.mid, height_fuzzy.mid), min(weight_fuzzy.mid, height_fuzzy.high))
     st5_percent = max(min(weight_fuzzy.high, height_fuzzy.low), min(weight_fuzzy.high, height_fuzzy.mid), min(weight_fuzzy.high, height_fuzzy.high))
     percents = [st1_percent, st2_percent, st3_percent, st4_percent, st5_percent]
     print(percents)

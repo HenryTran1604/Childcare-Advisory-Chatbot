@@ -38,21 +38,21 @@ I. RULE
 	RU37: SY12 -> RS4
 	RU38: SY12 -> RS11
 FACT:
-	P7, ST5, SY11, SY5, 
+	P7, ST4, SY11, SY6, SY13, SY15, 
 II. INFERENCE
 -----------ITERATION 1------------
 RU1: SY1 -> RS10 không được áp dụng, vì thiếu fact: SY1
 RU2: SY1 -> RS11 không được áp dụng, vì thiếu fact: SY1
 RU3: SY2 -> RS4 không được áp dụng, vì thiếu fact: SY2
 RU4: SY2 -> RS10 không được áp dụng, vì thiếu fact: SY2
-RU5: SY11 -> RS2 áp dụng, cập nhật flag1. Facts P7, ST5, SY11, SY5 => RS2
+RU5: SY11 -> RS2 áp dụng, cập nhật flag1. Facts P7, ST4, SY11, SY6, SY13, SY15 => RS2
 -----------ITERATION 2------------
 RU1: SY1 -> RS10 không được áp dụng, vì thiếu fact: SY1
 RU2: SY1 -> RS11 không được áp dụng, vì thiếu fact: SY1
 RU3: SY2 -> RS4 không được áp dụng, vì thiếu fact: SY2
 RU4: SY2 -> RS10 không được áp dụng, vì thiếu fact: SY2
 RU5: SY11 -> RS2 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU6: SY11 -> RS9 áp dụng, cập nhật flag1. Facts P7, ST5, SY11, SY5 => RS2, RS9
+RU6: SY11 -> RS9 áp dụng, cập nhật flag1. Facts P7, ST4, SY11, SY6, SY13, SY15 => RS2, RS9
 -----------ITERATION 3------------
 RU1: SY1 -> RS10 không được áp dụng, vì thiếu fact: SY1
 RU2: SY1 -> RS11 không được áp dụng, vì thiếu fact: SY1
@@ -62,58 +62,50 @@ RU5: SY11 -> RS2 bỏ qua vì cờ flag1 đã được đánh dấu.
 RU6: SY11 -> RS9 bỏ qua vì cờ flag1 đã được đánh dấu.
 RU7: SY43 -> RS12 không được áp dụng, vì thiếu fact: SY43
 RU8: SY43 -> RS13 không được áp dụng, vì thiếu fact: SY43
-RU9: SY5 -> RS5 áp dụng, cập nhật flag1. Facts P7, ST5, SY11, SY5 => RS2, RS9, RS5
+RU9: SY5 -> RS5 không được áp dụng, vì thiếu fact: SY5
+RU10: SY5 -> RS9 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU11: SY5 -> RS10 không được áp dụng, vì thiếu fact: SY5
+RU12: SY6 -> RS2 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU13: SY6 -> RS4 áp dụng, cập nhật flag1. Facts P7, ST4, SY11, SY6, SY13, SY15 => RS2, RS9, RS4
 -----------ITERATION 4------------
 RU1: SY1 -> RS10 không được áp dụng, vì thiếu fact: SY1
 RU2: SY1 -> RS11 không được áp dụng, vì thiếu fact: SY1
-RU3: SY2 -> RS4 không được áp dụng, vì thiếu fact: SY2
+RU3: SY2 -> RS4 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
 RU4: SY2 -> RS10 không được áp dụng, vì thiếu fact: SY2
 RU5: SY11 -> RS2 bỏ qua vì cờ flag1 đã được đánh dấu.
 RU6: SY11 -> RS9 bỏ qua vì cờ flag1 đã được đánh dấu.
 RU7: SY43 -> RS12 không được áp dụng, vì thiếu fact: SY43
 RU8: SY43 -> RS13 không được áp dụng, vì thiếu fact: SY43
-RU9: SY5 -> RS5 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU10: SY5 -> RS9 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU11: SY5 -> RS10 áp dụng, cập nhật flag1. Facts P7, ST5, SY11, SY5 => RS2, RS9, RS5, RS10
------------ITERATION 5------------
-RU1: SY1 -> RS10 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU2: SY1 -> RS11 không được áp dụng, vì thiếu fact: SY1
-RU3: SY2 -> RS4 không được áp dụng, vì thiếu fact: SY2
-RU4: SY2 -> RS10 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU5: SY11 -> RS2 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU6: SY11 -> RS9 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU7: SY43 -> RS12 không được áp dụng, vì thiếu fact: SY43
-RU8: SY43 -> RS13 không được áp dụng, vì thiếu fact: SY43
-RU9: SY5 -> RS5 bỏ qua vì cờ flag1 đã được đánh dấu.
+RU9: SY5 -> RS5 không được áp dụng, vì thiếu fact: SY5
 RU10: SY5 -> RS9 bỏ qua vì cờ flag2 đã được đánh dấu.
-RU11: SY5 -> RS10 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU12: SY6 -> RS2 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU13: SY6 -> RS4 không được áp dụng, vì thiếu fact: SY6
+RU11: SY5 -> RS10 không được áp dụng, vì thiếu fact: SY5
+RU12: SY6 -> RS2 bỏ qua vì cờ flag2 đã được đánh dấu.
+RU13: SY6 -> RS4 bỏ qua vì cờ flag1 đã được đánh dấu.
 RU14: SY41 -> RS3 không được áp dụng, vì thiếu fact: SY41
 RU15: SY13 -> RS2 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
 RU16: SY14 -> RS3 không được áp dụng, vì thiếu fact: SY14
-RU17: SY14 -> RS4 không được áp dụng, vì thiếu fact: SY14
+RU17: SY14 -> RS4 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
 RU18: SY14 -> RS11 không được áp dụng, vì thiếu fact: SY14
 RU19: SY44 -> RS12 không được áp dụng, vì thiếu fact: SY44
 RU20: SY16 -> RS2 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
 RU21: SY16 -> RS3 không được áp dụng, vì thiếu fact: SY16
-RU22: SY16 -> RS5 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU22: SY16 -> RS5 không được áp dụng, vì thiếu fact: SY16
 RU23: SY16 -> RS9 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU24: SY16 -> RS10 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU24: SY16 -> RS10 không được áp dụng, vì thiếu fact: SY16
 RU25: SY17 -> RS3 không được áp dụng, vì thiếu fact: SY17
 RU26: SY18 -> RS2 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU27: SY18 -> RS5 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU27: SY18 -> RS5 không được áp dụng, vì thiếu fact: SY18
 RU28: SY33 -> RS3 không được áp dụng, vì thiếu fact: SY33
-RU29: SY40 -> RS10 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU29: SY40 -> RS10 không được áp dụng, vì thiếu fact: SY40
 RU30: SY19 -> RS3 không được áp dụng, vì thiếu fact: SY19
-RU31: SY27 -> RS5 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU31: SY27 -> RS5 không được áp dụng, vì thiếu fact: SY27
 RU32: SY15 -> RS2 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU33: SY24 -> RS4 không được áp dụng, vì thiếu fact: SY24
-RU34: SY20 -> RS4 không được áp dụng, vì thiếu fact: SY20
+RU33: SY24 -> RS4 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
+RU34: SY20 -> RS4 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
 RU35: SY20 -> RS11 không được áp dụng, vì thiếu fact: SY20
 RU36: SY12 -> RS2 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
-RU37: SY12 -> RS4 không được áp dụng, vì thiếu fact: SY12
+RU37: SY12 -> RS4 bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.
 RU38: SY12 -> RS11 không được áp dụng, vì thiếu fact: SY12
 ----------------------------------------------------
-Facts sau khi suy diễn: P7, ST5, SY11, SY5, RS2, RS9, RS5, RS10
-Những luật được áp dụng: RU5, RU6, RU9, RU11
+Facts sau khi suy diễn: P7, ST4, SY11, SY6, SY13, SY15, RS2, RS9, RS4
+Những luật được áp dụng: RU5, RU6, RU13
