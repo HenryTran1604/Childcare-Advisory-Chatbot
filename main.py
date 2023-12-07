@@ -24,17 +24,22 @@ class Main:
     def __init__(self) -> None:
         self.dao = DAO()
         self.facts = self.dao.find_all_facts()
-        self.current_problems = []
-        self.negative_problems = []
+        self.current_facts = []
+        self.negative_facts = []
         self.age = 0
         self.weight = 0
         self.height = 0
         self.gender = None
+        self.status = ''
         self.basic_info = False
+    
+    def fuzzy(self):
+        self.status = caculate(self.gender, self.age, self.weight, self.height)
+        self.current_facts.append(self.status)
+        self.basic_info = True
 
     def consult_nutrition_module(self): # tư vấn dinh dưỡng
-        self.gender_question()
-        self.height_weight_question()
+        self.fuzzy()
 
     def issue_resolution_module(self): # giải quyết vấn dề sức khỏe
         self.confirm()
@@ -81,7 +86,7 @@ class Main:
             period = "P7"
         else:
             period = "P8"
-        self.current_problems.append(period)
+        self.current_facts.append(period)
 
     def height_weight_question(self):
         question = "Con của bạn có chiều cao (cm), cân nặng (kg) là bao nhiêu? (Vui lòng nhập đúng thứ tự và đơn vị)"
@@ -102,9 +107,7 @@ class Main:
                 pass
         if cnt == 2:
             user_print(f"Con tôi cao {self.height} cm và có cân nặng {self.weight} kg")
-            self.current_problems.append(caculate(self.gender, self.age, self.weight, self.height))
-            self.basic_info = True
-#            print(self.facts[self.current_problems[-1]])
+#            print(self.facts[self.current_facts[-1]])
         else:
             chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
 
@@ -113,7 +116,7 @@ class Main:
         while cnt < len(question_keys):
             chatbot_print("Con của bạn có dấu hiệu nào trong các đặc điểm sau hay không?")
             for i, key in enumerate(question_keys):
-                if key not in self.current_problems:
+                if key not in self.current_facts:
                     options_print(f"{i + 1}: [{key}] {self.facts[key]}")
             options_print("0. Con tôi không có triệu chứng nào ở trên")
             ans = int(input())
@@ -122,11 +125,11 @@ class Main:
                 break
             user_print(f"Con tôi có dấu hiệu: [{question_keys[ans - 1]}] {self.facts[question_keys[ans - 1]]}")
 
-            self.current_problems.append(question_keys[ans - 1])
+            self.current_facts.append(question_keys[ans - 1])
             cnt += 1
         for key in question_keys:
-            if key not in self.current_problems:
-                self.negative_problems.append(key)
+            if key not in self.current_facts:
+                self.negative_facts.append(key)
 
     def health_question(self):
         chatbot_print("Chúng tôi muốn biết tình trạng về **SỨC KHỎE** hiện tại của con bạn")
@@ -166,23 +169,22 @@ class Main:
         # self.respiratory_question()
         self.vision_question()
         fc = ForwardChaining()
-        problems = fc.forward_chaining(self.current_problems)[2]
+        facts = fc.forward_chaining(self.current_facts)[2]
         fc.write('FC')
         others, predict_reasons = [], []
         status = ''
-        for x in problems:
+        for x in facts:
             if x[:2] == 'ST':
                 status = x
-            if x[:2] == 'RS':
+            if x[:2] == 'PR':
                 predict_reasons.append(x)
             else:
                 others.append(x)
-        chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[status]}')
         if len(predict_reasons):
-            chatbot_print('Một cách chi tiết hơn, chúng tôi thấy con bạn có thể đang gặp các tình trạng sau:')
+            chatbot_print('Theo đánh giá sơ bộ, húng tôi thấy con bạn có thể đang gặp các tình trạng sau:')
             for reason in predict_reasons:
                 chatbot_print2(f'[{reason}] {self.facts[reason]}')
-            self.current_problems = others
+            self.current_facts = others
             return predict_reasons
     
     def confirm(self):
@@ -190,14 +192,14 @@ class Main:
         bc = BackwardChaining()
         asked_symptoms = set()
         for i, reason in enumerate(predict_reasons):
-            result = bc.backward_chaining(self.current_problems, reason)
+            result = bc.backward_chaining(self.current_facts, reason)
             if result:
                 print(f'Chúng tôi đã có kết luận, con bạn đã bị {self.facts[symp]}')
-                self.current_problems.append(reason)
+                self.current_facts.append(reason)
                 continue
             chatbot_print(f'Chúng tôi muốn xác nhận liệu con bạn có đang bị {self.facts[reason]} hay không.')
             chatbot_print2('Vui lòng trả lời có hoặc không những câu hỏi sau đây')
-            remain_symps = list(self.dao.find_all_symtoms_by_reason(reason) - set(self.current_problems) - asked_symptoms - set(self.negative_problems))
+            remain_symps = list(self.dao.find_all_symtoms_by_reason(reason) - set(self.current_facts) - asked_symptoms - set(self.negative_facts))
             found = False
             while len(remain_symps) > 0:
                 symp = remain_symps.pop()
@@ -206,11 +208,11 @@ class Main:
                 ans = int(input())
                 if ans == 1:
                     user_print('Có')
-                    self.current_problems.append(symp)
-                    result = bc.backward_chaining(self.current_problems, reason)
+                    self.current_facts.append(symp)
+                    result = bc.backward_chaining(self.current_facts, reason)
                     if result:
                         chatbot_print(f'Chúng tôi đã có kết luận, con bạn đã bị [{reason}] {self.facts[reason]}')
-                        self.current_problems.append(reason)
+                        self.current_facts.append(reason)
                         found = True
                         break
                 else:
@@ -219,33 +221,37 @@ class Main:
                 chatbot_print(f'Có vẻ con bạn không bị [{reason}] {self.facts[reason]}')
             if i < len(predict_reasons) - 1:
                 chatbot_print('Bạn có muốn tiếp tục suy luận hay muốn nhận lời khuyên? (1 - tiếp tục, 0 - nhận lời khuyên)')
-            tmp = int(input())
-            if tmp == 0:
-                self.give_advices()
-                return
+                tmp = int(input())
+                if tmp == 0:
+                    self.give_advices()
+                    return
         self.give_advices()
 
 
     def give_advices(self):
         advices = []
         bc = BackwardChaining()
-        print(self.current_problems)
+        print(self.current_facts)
         for i in range(1, 50):
-            if bc.backward_chaining(self.current_problems, f'A{i}'):
+            if bc.backward_chaining(self.current_facts, f'A{i}'):
                 advices.append(f'A{i}')
+        chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')
         chatbot_print('Chúng tôi có lời tư vấn cho cách chăm sóc con của bạn như sau:')
         for advice in advices:
             chatbot_print(f'Đối với vấn đề {advice}')
             chatbot_print2(self.facts[advice])
 
     def run(self):
-        self.consult_nutrition_module()
-        chatbot_print('Bạn có muốn nhận lời tư vấn dinh dưỡng luôn hay muốn tiếp tục')
-        chatbot_print('hỏi về các vấn đề sức khỏe?')
+        self.gender_question()
+        self.height_weight_question()
+        chatbot_print('Bạn có muốn nhận lời tư vấn dinh dưỡng luôn hay muốn tiếp tục hỏi về các vấn đề sức khỏe?')
+        chatbot_print2('1. Tiếp tục')
+        chatbot_print2('2. Tư vấn dinh dưỡng và vận động')
         ans = int(input())
         if ans == 1:
             self.issue_resolution_module()
         else:
+            self.fuzzy()
             self.give_advices()
 
 
