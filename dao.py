@@ -24,17 +24,10 @@ class DAO:
         self.cursor.execute(stm)
         facts = self.cursor.fetchall()
         return facts
-    
-    def find_all_forward_rules(self):
-        stm = f'SELECT rule.id_rule, id_antecedent_fact, id_consequent_fact FROM rule, inference WHERE rule.type = 0 AND rule.id_rule = inference.id_rule'
-        self.cursor.execute(stm)
-        result = self.cursor.fetchall()
-        forward_rules = [Rule(x[0], [x[1]], x[2]) for x in result]
-        return forward_rules
-    
-    def find_all_backward_rules(self):
-        stm = f'SELECT rule.id_rule, id_antecedent_fact, id_consequent_fact FROM rule, inference WHERE rule.type = 1 AND rule.id_rule = inference.id_rule'
-        self.cursor.execute(stm)
+
+    def find_all_rules(self, type):
+        stm = f'SELECT rule.id_rule, id_antecedent_fact, id_consequent_fact FROM rule, inference WHERE rule.type = %s AND rule.id_rule = inference.id_rule'
+        self.cursor.execute(stm, (type, ))
         result = self.cursor.fetchall()
         d = {}
         for x in result:
@@ -44,8 +37,15 @@ class DAO:
             else:
                 d[key].append(x[1])
 
-        backward_rules = [Rule(x[0], d[x], x[1]) for x in d]
-        return backward_rules
+        rules = [Rule(x[0], d[x], x[1]) for x in d]
+        return rules
+
+    def find_all_forward_rules(self):
+        return self.find_all_rules(0)
+
+    def find_all_backward_rules(self):
+        return self.find_all_rules(1)
+    
     
     def find_all_symtoms_by_reason(self, reason_id):
         stm = 'SELECT DISTINCT id_antecedent_fact FROM inference WHERE id_consequent_fact=%s'
@@ -65,3 +65,4 @@ class DAO:
         self.cursor.execute(stm, (gender, age))
         result = self.cursor.fetchone()
         return list(result)
+    

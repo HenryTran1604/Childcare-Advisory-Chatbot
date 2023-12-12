@@ -1,24 +1,51 @@
 from forward_chaining import ForwardChaining
 from backward_chaining import BackwardChaining
 from dao import DAO
-#from classification import classify
 from fuzzy import caculate
 from helper import *
+import re
 
-class Validation:
-    def __init__(self) -> None:
-        pass
 
-    def validate_number(self, datatype, value):
-        try:
-            target_value = datatype(value)
-            return target_value
-        except:
-            return None
+def validate_number(self, datatype, value):
+    try:
+        target_value = datatype(value)
+        return target_value
+    except:
+        return None
 
-    def validate_numberic_answer(self, datatype, answer):
-        pass
+def symptoms_response(max):
+    while True:
+        response = input()
+        s = re.split('\s+|,+|\.', response)
+        ans, is_valid = [], True
+        for x in s:
+            try:
+                x = int(x)
+                if x < 0 or x > max:
+                    is_valid = False
+                    break
+                ans.append(x)
+            except:
+                is_valid = False
+        if is_valid:
+            break
+        else:
+            user_print(response)
+            chatbot_print('Câu trả lời vừa rồi không hợp lệ, vui lòng nhập lại!')
 
+    return ans
+
+def yes_no_response():
+    while True:
+        response = input()
+        if response.lower() in ['1', 'yes', 'có']:
+            return True
+        elif response.lower() in ['0', 'no', 'không']:
+            return False
+        else:
+            user_print(response)
+            chatbot_print('Câu trả lời vừa rồi không hợp lệ, vui lòng trả lời có hoặc không!')
+                
 
 class Main:
     def __init__(self) -> None:
@@ -30,16 +57,16 @@ class Main:
         self.weight = 0
         self.height = 0
         self.gender = None
-        self.status = ''
-        self.basic_info = False
+        self.status = None
     
     def fuzzy(self):
         self.status = caculate(self.gender, self.age, self.weight, self.height)
         self.current_facts.append(self.status)
-        self.basic_info = True
 
     def consult_nutrition_module(self): # tư vấn dinh dưỡng
+        self.current_facts.append('M1')
         self.fuzzy()
+        self.give_advices()
 
     def issue_resolution_module(self): # giải quyết vấn dề sức khỏe
         self.confirm()
@@ -112,24 +139,22 @@ class Main:
             chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
 
     def __ask(self, question_keys):
-        cnt = 0
-        while cnt < len(question_keys):
-            chatbot_print("Con của bạn có dấu hiệu nào trong các đặc điểm sau hay không?")
-            for i, key in enumerate(question_keys):
-                if key not in self.current_facts:
-                    options_print(f"{i + 1}: [{key}] {self.facts[key]}")
-            options_print("0. Con tôi không có triệu chứng nào ở trên")
-            ans = int(input())
-            if ans == 0:
-                user_print(f'Con tôi không có dấu hiệu nào kể trên')
-                break
-            user_print(f"Con tôi có dấu hiệu: [{question_keys[ans - 1]}] {self.facts[question_keys[ans - 1]]}")
-
-            self.current_facts.append(question_keys[ans - 1])
-            cnt += 1
-        for key in question_keys:
+        chatbot_print("Con của bạn có dấu hiệu nào trong các đặc điểm sau hay không?")
+        for i, key in enumerate(question_keys):
             if key not in self.current_facts:
-                self.negative_facts.append(key)
+                options_print(f"{i + 1}: [{key}] {self.facts[key]}")
+        options_print("0. Con tôi không có triệu chứng nào ở trên")
+        ans = symptoms_response(max=len(question_keys))
+        if len(ans) == 1 and ans[0] == 0:
+            user_print(f'Con tôi không có dấu hiệu nào kể trên')
+        else:
+            user_print(f"Con tôi có dấu hiệu: {ans}")
+            for x in ans:
+                if x != 0:
+                    self.current_facts.append(question_keys[x - 1])
+            for key in question_keys:
+                if key not in self.current_facts:
+                    self.negative_facts.append(key)
 
     def health_question(self):
         chatbot_print("Chúng tôi muốn biết tình trạng về **SỨC KHỎE** hiện tại của con bạn")
@@ -181,7 +206,7 @@ class Main:
             else:
                 others.append(x)
         if len(predict_reasons):
-            chatbot_print('Theo đánh giá sơ bộ, húng tôi thấy con bạn có thể đang gặp các tình trạng sau:')
+            chatbot_print('Theo đánh giá sơ bộ, chúng tôi thấy con bạn có thể đang gặp các tình trạng sau:')
             for reason in predict_reasons:
                 chatbot_print2(f'[{reason}] {self.facts[reason]}')
             self.current_facts = others
@@ -205,8 +230,8 @@ class Main:
                 symp = remain_symps.pop()
                 asked_symptoms.add(symp)
                 chatbot_print(f'Con bạn có hiện tượng [{symp}] {self.facts[symp]} hay không?')
-                ans = int(input())
-                if ans == 1:
+                ans = yes_no_response()
+                if ans:
                     user_print('Có')
                     self.current_facts.append(symp)
                     result = bc.backward_chaining(self.current_facts, reason)
@@ -230,29 +255,27 @@ class Main:
 
     def give_advices(self):
         advices = []
-        bc = BackwardChaining()
-        print(self.current_facts)
-        for i in range(1, 50):
-            if bc.backward_chaining(self.current_facts, f'A{i}'):
-                advices.append(f'A{i}')
-        chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')
+        fc = ForwardChaining()
+        result = fc.forward_chaining(self.current_facts)[2]
+        fc.write('ADVICE')
+        advices = [x for x in result if x[0] == 'A']
+        if self.status:
+            chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')
         chatbot_print('Chúng tôi có lời tư vấn cho cách chăm sóc con của bạn như sau:')
         for advice in advices:
-            chatbot_print(f'Đối với vấn đề {advice}')
             chatbot_print2(self.facts[advice])
 
     def run(self):
         self.gender_question()
         self.height_weight_question()
-        chatbot_print('Bạn có muốn nhận lời tư vấn dinh dưỡng luôn hay muốn tiếp tục hỏi về các vấn đề sức khỏe?')
-        chatbot_print2('1. Tiếp tục')
-        chatbot_print2('2. Tư vấn dinh dưỡng và vận động')
+        chatbot_print('Bạn muốn nhận lời khuyên từ mục nào?')
+        chatbot_print2('1. Tư vấn dinh dưỡng và vận động')
+        chatbot_print2('2. Tư vấn về các vấn đề sức khỏe')
         ans = int(input())
-        if ans == 1:
+        if ans == 2:
             self.issue_resolution_module()
         else:
-            self.fuzzy()
-            self.give_advices()
+            self.consult_nutrition_module()
 
 
 main = Main()

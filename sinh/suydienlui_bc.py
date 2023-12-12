@@ -14,5 +14,5 @@ for line in f.readlines():
         if x[0] == 'S' and x[1].isnumeric() and len(x) == 3:
             x = 'SY' + x[1:]
         tmp.append(x)
-    out.write(f"{' + '.join(tmp)} -> {s[-1]}\n")
+    out.write(f"{' + '.join(tmp)} -> PR{s[-1][-2:]}\n")
     cnt2 += 1
