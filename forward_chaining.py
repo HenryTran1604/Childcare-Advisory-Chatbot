@@ -2,19 +2,17 @@ from rule import Rule
 from dao import DAO
 class ForwardChaining:
     def __init__(self) -> None:
-        dao = DAO()
-        self.fc_rules = dao.find_all_forward_rules()
         self.log = ''
 
-    def forward_chaining(self, facts):
-        self.log_rules_facts(facts)
+    def forward_chaining(self, facts, fc_rules):
+        self.log_rules_facts(facts, fc_rules)
         self.log += '\nII. INFERENCE\n'
         road = []
         i, pos = 1, len(facts)
         while i:
             self.log += f'-----------ITERATION {i}------------\n'
             rule_applied = False
-            for rule in self.fc_rules:
+            for rule in fc_rules:
                 self.log += str(rule)
                 if rule.flag1: # nếu luạt đã được cm rồi
                     self.log += ' bỏ qua vì cờ flag1 đã được đánh dấu.\n'
@@ -35,7 +33,7 @@ class ForwardChaining:
                     rule_applied = True
                     rule.flag1 = True
                     facts.append(rule.consequent)
-                    road.append("RU" + str(self.fc_rules.index(rule) + 1))
+                    road.append("RU" + str(fc_rules.index(rule) + 1))
                     self.log += f' áp dụng, cập nhật flag1. Facts {", ".join(facts[:pos])} => {", ".join(facts[pos:])}\n'
                     break
                 else: # do vế trái thiếu mất fact
@@ -48,9 +46,9 @@ class ForwardChaining:
         self.log_result(facts, road)
         return True, road ,facts
     
-    def log_rules_facts(self, facts):
+    def log_rules_facts(self, facts, fc_rules):
         self.log += 'I. RULE\n'
-        for rule in self.fc_rules:
+        for rule in fc_rules:
             self.log += f'\t{rule}\n'
         self.log += 'FACT:\n\t'
         for fact in facts:

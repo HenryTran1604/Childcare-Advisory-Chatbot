@@ -58,6 +58,10 @@ class Main:
         self.height = 0
         self.gender = None
         self.status = None
+        fc_rules = self.dao.find_all_forward_rules()
+        self.fc_rules_pr = fc_rules[:39]
+        self.fc_rules_ad = fc_rules[39:]
+        self.bc_rules = self.dao.find_all_backward_rules()
     
     def fuzzy(self):
         self.status = caculate(self.gender, self.age, self.weight, self.height)
@@ -152,9 +156,9 @@ class Main:
             for x in ans:
                 if x != 0:
                     self.current_facts.append(question_keys[x - 1])
-            for key in question_keys:
-                if key not in self.current_facts:
-                    self.negative_facts.append(key)
+        for key in question_keys:
+            if key not in self.current_facts:
+                self.negative_facts.append(key)
 
     def health_question(self):
         chatbot_print("Chúng tôi muốn biết tình trạng về **SỨC KHỎE** hiện tại của con bạn")
@@ -194,7 +198,7 @@ class Main:
         # self.respiratory_question()
         self.vision_question()
         fc = ForwardChaining()
-        facts = fc.forward_chaining(self.current_facts)[2]
+        facts = fc.forward_chaining(self.current_facts, self.fc_rules_pr)[2]
         fc.write('FC')
         others, predict_reasons = [], []
         status = ''
@@ -214,10 +218,11 @@ class Main:
     
     def confirm(self):
         predict_reasons = self.predict()
+        print(self.negative_facts)
         bc = BackwardChaining()
         asked_symptoms = set()
         for i, reason in enumerate(predict_reasons):
-            result = bc.backward_chaining(self.current_facts, reason)
+            result = bc.backward_chaining(self.current_facts, reason, self.bc_rules)
             if result:
                 print(f'Chúng tôi đã có kết luận, con bạn đã bị {self.facts[symp]}')
                 self.current_facts.append(reason)
@@ -234,7 +239,8 @@ class Main:
                 if ans:
                     user_print('Có')
                     self.current_facts.append(symp)
-                    result = bc.backward_chaining(self.current_facts, reason)
+                    result = bc.backward_chaining(self.current_facts, reason, self.bc_rules)
+                    bc.write('BC')
                     if result:
                         chatbot_print(f'Chúng tôi đã có kết luận, con bạn đã bị [{reason}] {self.facts[reason]}')
                         self.current_facts.append(reason)
@@ -256,14 +262,17 @@ class Main:
     def give_advices(self):
         advices = []
         fc = ForwardChaining()
-        result = fc.forward_chaining(self.current_facts)[2]
+        result = fc.forward_chaining(self.current_facts, self.fc_rules_ad)[2]
         fc.write('ADVICE')
         advices = [x for x in result if x[0] == 'A']
         if self.status:
             chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')
-        chatbot_print('Chúng tôi có lời tư vấn cho cách chăm sóc con của bạn như sau:')
-        for advice in advices:
-            chatbot_print2(self.facts[advice])
+        if len(advices):
+            chatbot_print('Chúng tôi có lời tư vấn cho cách chăm sóc con của bạn như sau:')
+            for advice in advices:
+                chatbot_print2(self.facts[advice])
+        else:
+            chatbot_print('Có vẻ con bạn đang không gặp các vấn đề mà hệ thống của chúng tôi có thể giải quyết.')
 
     def run(self):
         self.gender_question()
