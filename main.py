@@ -26,7 +26,6 @@ class Main:
         self.current_facts.append(self.status)
 
     def consult_nutrition_module(self): # tư vấn dinh dưỡng
-        self.height_weight_question()
         self.current_facts.append('M1')
         self.fuzzy()
         self.give_advices()
@@ -212,6 +211,7 @@ class Main:
     def run(self):
         self.greeting()
         self.gender_question()
+        self.height_weight_question()
         chatbot_print('Bạn muốn nhận lời khuyên từ mục nào?')
         chatbot_print2('1. Tư vấn dinh dưỡng và vận động')
         chatbot_print2('2. Tư vấn về các vấn đề sức khỏe')
