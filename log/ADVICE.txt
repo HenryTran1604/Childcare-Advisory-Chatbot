@@ -1,265 +1,239 @@
 I. RULE
-	RU40: M1, P2 -> A2
-	RU41: M1, P3 -> A3
-	RU42: M1, P4 -> A4
-	RU43: M1, P5 -> A5
-	RU44: M1, P6 -> A6
-	RU45: M1, P7 -> A7
-	RU46: M1, P8 -> A8
-	RU47: PR2, P1 -> A9
-	RU48: PR2, P2 -> A9
-	RU49: PR2, P3 -> A9
-	RU50: PR2, P4 -> A9
-	RU51: PR2, P5 -> A10
-	RU52: PR2, P6 -> A10
-	RU53: PR2, P7 -> A10
-	RU54: PR2 -> A11
-	RU55: PR2, P8 -> A12
-	RU56: PR3, P1 -> A13
-	RU57: PR3, P2 -> A13
-	RU58: PR3, P3 -> A13
-	RU59: PR3, P4 -> A13
-	RU60: PR3, P5 -> A14
-	RU61: PR3, P6 -> A14
-	RU62: PR3, P7 -> A14
-	RU63: PR3, P8 -> A15
-	RU64: PR3, P1 -> A16
-	RU65: PR3, P2 -> A16
-	RU66: PR3, P3 -> A16
-	RU67: PR3, P4 -> A16
-	RU68: PR3, P5 -> A17
-	RU69: PR3, P6 -> A17
-	RU70: PR3, P7 -> A17
-	RU71: PR3, P8 -> A17
-	RU72: PR3 -> A18
-	RU73: PR4 -> A19
-	RU74: PR4, P5 -> A20
-	RU75: PR4, P6 -> A20
-	RU76: PR4, P7 -> A20
-	RU77: PR4, P8 -> A20
-	RU78: PR5 -> A21
-	RU79: PR5, P1 -> A22
-	RU80: PR5, P2 -> A22
-	RU81: PR5, P3 -> A22
-	RU82: PR5, P4 -> A22
-	RU83: PR5, P5 -> A23
-	RU84: PR5, P6 -> A23
-	RU85: PR5, P7 -> A23
-	RU86: PR5, P8 -> A24
-	RU87: PR9, P5 -> A25
-	RU88: PR9, P6 -> A25
-	RU89: PR9, P7 -> A25
-	RU90: PR9, P8 -> A25
-	RU91: PR12, P1 -> A26
-	RU92: PR12, P2 -> A26
-	RU93: PR12, P3 -> A26
-	RU94: PR12, P4 -> A26
-	RU95: PR12, P5 -> A27
-	RU96: PR12, P6 -> A27
-	RU97: PR12, P7 -> A27
-	RU98: PR12, P8 -> A27
-	RU99: PR10, P1 -> A28
-	RU100: PR10, P2 -> A28
-	RU101: PR10, P3 -> A28
-	RU102: PR10, P4 -> A28
-	RU103: PR10, P5 -> A29
-	RU104: PR10, P6 -> A29
-	RU105: PR10, P7 -> A29
-	RU106: PR10, P8 -> A29
-	RU107: PR11, P1 -> A30
-	RU108: PR11, P2 -> A30
-	RU109: PR11, P3 -> A30
-	RU110: PR11, P4 -> A30
-	RU111: PR11, P5 -> A31
-	RU112: PR11, P6 -> A31
-	RU113: PR11, P7 -> A31
-	RU114: PR11, P8 -> A32
-	RU115: PR11, P5 -> A33
-	RU116: PR11, P6 -> A33
-	RU117: PR11, P7 -> A33
-	RU118: PR11, P8 -> A33
-	RU119: ST1 -> A34
-	RU120: ST2 -> A35
-	RU121: ST3 -> A36
-	RU122: ST4 -> A37
-	RU123: ST5 -> A37
+	RU36: M1, P1 -> A1
+	RU37: M1, P2 -> A2
+	RU38: M1, P3 -> A3
+	RU39: M1, P4 -> A4
+	RU40: M1, P5 -> A5
+	RU41: M1, P6 -> A6
+	RU42: M1, P7 -> A7
+	RU43: M1, P8 -> A8
+	RU44: PR2, P1 -> A9
+	RU45: PR2, P2 -> A9
+	RU46: PR2, P3 -> A9
+	RU47: PR2, P4 -> A9
+	RU48: PR2, P5 -> A10
+	RU49: PR2, P6 -> A10
+	RU50: PR2, P7 -> A10
+	RU51: PR2 -> A11
+	RU52: PR2, P8 -> A12
+	RU53: PR3, P1 -> A13
+	RU54: PR3, P2 -> A13
+	RU55: PR3, P3 -> A13
+	RU56: PR3, P4 -> A13
+	RU57: PR3, P5 -> A14
+	RU58: PR3, P6 -> A14
+	RU59: PR3, P7 -> A14
+	RU60: PR3, P8 -> A15
+	RU61: PR3, P1 -> A16
+	RU62: PR3, P2 -> A16
+	RU63: PR3, P3 -> A16
+	RU64: PR3, P4 -> A16
+	RU65: PR3, P5 -> A17
+	RU66: PR3, P6 -> A17
+	RU67: PR3, P7 -> A17
+	RU68: PR3, P8 -> A17
+	RU69: PR3 -> A18
+	RU70: PR4 -> A19
+	RU71: PR4, P5 -> A20
+	RU72: PR4, P6 -> A20
+	RU73: PR4, P7 -> A20
+	RU74: PR4, P8 -> A20
+	RU75: PR5 -> A21
+	RU76: PR5, P1 -> A22
+	RU77: PR5, P2 -> A22
+	RU78: PR5, P3 -> A22
+	RU79: PR5, P4 -> A22
+	RU80: PR5, P5 -> A23
+	RU81: PR5, P6 -> A23
+	RU82: PR5, P7 -> A23
+	RU83: PR5, P8 -> A24
+	RU84: PR9, P5 -> A25
+	RU85: PR9, P6 -> A25
+	RU86: PR9, P7 -> A25
+	RU87: PR9, P8 -> A25
+	RU88: PR10, P1 -> A28
+	RU89: PR10, P2 -> A28
+	RU90: PR10, P3 -> A28
+	RU91: PR10, P4 -> A28
+	RU92: PR10, P5 -> A29
+	RU93: PR10, P6 -> A29
+	RU94: PR10, P7 -> A29
+	RU95: PR10, P8 -> A29
+	RU96: PR11, P1 -> A30
+	RU97: PR11, P2 -> A30
+	RU98: PR11, P3 -> A30
+	RU99: PR11, P4 -> A30
+	RU100: PR11, P5 -> A31
+	RU101: PR11, P6 -> A31
+	RU102: PR11, P7 -> A31
+	RU103: PR11, P8 -> A32
+	RU104: PR11, P5 -> A33
+	RU105: PR11, P6 -> A33
+	RU106: PR11, P7 -> A33
+	RU107: PR11, P8 -> A33
+	RU108: ST1 -> A34
+	RU109: ST2 -> A35
+	RU110: ST3 -> A36
+	RU111: ST5 -> A37
 FACT:
-	P7, M1, ST2, 
+	P2, M1, ST3, 
 II. INFERENCE
 -----------ITERATION 1------------
-RU40: M1, P2 -> A2 không được áp dụng, vì thiếu fact: P2
-RU41: M1, P3 -> A3 không được áp dụng, vì thiếu fact: P3
-RU42: M1, P4 -> A4 không được áp dụng, vì thiếu fact: P4
-RU43: M1, P5 -> A5 không được áp dụng, vì thiếu fact: P5
-RU44: M1, P6 -> A6 không được áp dụng, vì thiếu fact: P6
-RU45: M1, P7 -> A7 áp dụng, cập nhật flag1. Facts P7, M1, ST2 => A7
+RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: P1
+RU37: M1, P2 -> A2 áp dụng, cập nhật flag1. Facts P2, M1, ST3 => A2
 -----------ITERATION 2------------
-RU40: M1, P2 -> A2 không được áp dụng, vì thiếu fact: P2
-RU41: M1, P3 -> A3 không được áp dụng, vì thiếu fact: P3
-RU42: M1, P4 -> A4 không được áp dụng, vì thiếu fact: P4
-RU43: M1, P5 -> A5 không được áp dụng, vì thiếu fact: P5
-RU44: M1, P6 -> A6 không được áp dụng, vì thiếu fact: P6
-RU45: M1, P7 -> A7 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU46: M1, P8 -> A8 không được áp dụng, vì thiếu fact: P8
-RU47: PR2, P1 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU48: PR2, P2 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU49: PR2, P3 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU50: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU51: PR2, P5 -> A10 không được áp dụng, vì thiếu fact: PR2
-RU52: PR2, P6 -> A10 không được áp dụng, vì thiếu fact: PR2
-RU53: PR2, P7 -> A10 không được áp dụng, vì thiếu fact: PR2
-RU54: PR2 -> A11 không được áp dụng, vì thiếu fact: PR2
-RU55: PR2, P8 -> A12 không được áp dụng, vì thiếu fact: PR2
-RU56: PR3, P1 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU57: PR3, P2 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU58: PR3, P3 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU59: PR3, P4 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU60: PR3, P5 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU61: PR3, P6 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU62: PR3, P7 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU63: PR3, P8 -> A15 không được áp dụng, vì thiếu fact: PR3
-RU64: PR3, P1 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU65: PR3, P2 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU66: PR3, P3 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU67: PR3, P4 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU68: PR3, P5 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU69: PR3, P6 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU70: PR3, P7 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU71: PR3, P8 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU72: PR3 -> A18 không được áp dụng, vì thiếu fact: PR3
-RU73: PR4 -> A19 không được áp dụng, vì thiếu fact: PR4
-RU74: PR4, P5 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU75: PR4, P6 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU76: PR4, P7 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU77: PR4, P8 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU78: PR5 -> A21 không được áp dụng, vì thiếu fact: PR5
-RU79: PR5, P1 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU80: PR5, P2 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU81: PR5, P3 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU82: PR5, P4 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU83: PR5, P5 -> A23 không được áp dụng, vì thiếu fact: PR5
-RU84: PR5, P6 -> A23 không được áp dụng, vì thiếu fact: PR5
-RU85: PR5, P7 -> A23 không được áp dụng, vì thiếu fact: PR5
-RU86: PR5, P8 -> A24 không được áp dụng, vì thiếu fact: PR5
-RU87: PR9, P5 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU88: PR9, P6 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU89: PR9, P7 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU90: PR9, P8 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU91: PR12, P1 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU92: PR12, P2 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU93: PR12, P3 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU94: PR12, P4 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU95: PR12, P5 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU96: PR12, P6 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU97: PR12, P7 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU98: PR12, P8 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU99: PR10, P1 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU100: PR10, P2 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU101: PR10, P3 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU102: PR10, P4 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU103: PR10, P5 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU104: PR10, P6 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU105: PR10, P7 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU106: PR10, P8 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU107: PR11, P1 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU108: PR11, P2 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU109: PR11, P3 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU110: PR11, P4 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU111: PR11, P5 -> A31 không được áp dụng, vì thiếu fact: PR11
-RU112: PR11, P6 -> A31 không được áp dụng, vì thiếu fact: PR11
-RU113: PR11, P7 -> A31 không được áp dụng, vì thiếu fact: PR11
-RU114: PR11, P8 -> A32 không được áp dụng, vì thiếu fact: PR11
-RU115: PR11, P5 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU116: PR11, P6 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU117: PR11, P7 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU118: PR11, P8 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU119: ST1 -> A34 không được áp dụng, vì thiếu fact: ST1
-RU120: ST2 -> A35 áp dụng, cập nhật flag1. Facts P7, M1, ST2 => A7, A35
+RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: P1
+RU37: M1, P2 -> A2 bỏ qua vì cờ flag1 đã được đánh dấu.
+RU38: M1, P3 -> A3 không được áp dụng, vì thiếu fact: P3
+RU39: M1, P4 -> A4 không được áp dụng, vì thiếu fact: P4
+RU40: M1, P5 -> A5 không được áp dụng, vì thiếu fact: P5
+RU41: M1, P6 -> A6 không được áp dụng, vì thiếu fact: P6
+RU42: M1, P7 -> A7 không được áp dụng, vì thiếu fact: P7
+RU43: M1, P8 -> A8 không được áp dụng, vì thiếu fact: P8
+RU44: PR2, P1 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU45: PR2, P2 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU46: PR2, P3 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU47: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU48: PR2, P5 -> A10 không được áp dụng, vì thiếu fact: PR2
+RU49: PR2, P6 -> A10 không được áp dụng, vì thiếu fact: PR2
+RU50: PR2, P7 -> A10 không được áp dụng, vì thiếu fact: PR2
+RU51: PR2 -> A11 không được áp dụng, vì thiếu fact: PR2
+RU52: PR2, P8 -> A12 không được áp dụng, vì thiếu fact: PR2
+RU53: PR3, P1 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU54: PR3, P2 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU55: PR3, P3 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU56: PR3, P4 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU57: PR3, P5 -> A14 không được áp dụng, vì thiếu fact: PR3
+RU58: PR3, P6 -> A14 không được áp dụng, vì thiếu fact: PR3
+RU59: PR3, P7 -> A14 không được áp dụng, vì thiếu fact: PR3
+RU60: PR3, P8 -> A15 không được áp dụng, vì thiếu fact: PR3
+RU61: PR3, P1 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU62: PR3, P2 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU63: PR3, P3 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU64: PR3, P4 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU65: PR3, P5 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU66: PR3, P6 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU67: PR3, P7 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU68: PR3, P8 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU69: PR3 -> A18 không được áp dụng, vì thiếu fact: PR3
+RU70: PR4 -> A19 không được áp dụng, vì thiếu fact: PR4
+RU71: PR4, P5 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU72: PR4, P6 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU73: PR4, P7 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU74: PR4, P8 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU75: PR5 -> A21 không được áp dụng, vì thiếu fact: PR5
+RU76: PR5, P1 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU77: PR5, P2 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU78: PR5, P3 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU79: PR5, P4 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU80: PR5, P5 -> A23 không được áp dụng, vì thiếu fact: PR5
+RU81: PR5, P6 -> A23 không được áp dụng, vì thiếu fact: PR5
+RU82: PR5, P7 -> A23 không được áp dụng, vì thiếu fact: PR5
+RU83: PR5, P8 -> A24 không được áp dụng, vì thiếu fact: PR5
+RU84: PR9, P5 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU85: PR9, P6 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU86: PR9, P7 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU87: PR9, P8 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU88: PR10, P1 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU89: PR10, P2 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU90: PR10, P3 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU91: PR10, P4 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU92: PR10, P5 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU93: PR10, P6 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU94: PR10, P7 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU95: PR10, P8 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU96: PR11, P1 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU97: PR11, P2 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU98: PR11, P3 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU99: PR11, P4 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU100: PR11, P5 -> A31 không được áp dụng, vì thiếu fact: PR11
+RU101: PR11, P6 -> A31 không được áp dụng, vì thiếu fact: PR11
+RU102: PR11, P7 -> A31 không được áp dụng, vì thiếu fact: PR11
+RU103: PR11, P8 -> A32 không được áp dụng, vì thiếu fact: PR11
+RU104: PR11, P5 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU105: PR11, P6 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU106: PR11, P7 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU107: PR11, P8 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU108: ST1 -> A34 không được áp dụng, vì thiếu fact: ST1
+RU109: ST2 -> A35 không được áp dụng, vì thiếu fact: ST2
+RU110: ST3 -> A36 áp dụng, cập nhật flag1. Facts P2, M1, ST3 => A2, A36
 -----------ITERATION 3------------
-RU40: M1, P2 -> A2 không được áp dụng, vì thiếu fact: P2
-RU41: M1, P3 -> A3 không được áp dụng, vì thiếu fact: P3
-RU42: M1, P4 -> A4 không được áp dụng, vì thiếu fact: P4
-RU43: M1, P5 -> A5 không được áp dụng, vì thiếu fact: P5
-RU44: M1, P6 -> A6 không được áp dụng, vì thiếu fact: P6
-RU45: M1, P7 -> A7 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU46: M1, P8 -> A8 không được áp dụng, vì thiếu fact: P8
-RU47: PR2, P1 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU48: PR2, P2 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU49: PR2, P3 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU50: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: PR2
-RU51: PR2, P5 -> A10 không được áp dụng, vì thiếu fact: PR2
-RU52: PR2, P6 -> A10 không được áp dụng, vì thiếu fact: PR2
-RU53: PR2, P7 -> A10 không được áp dụng, vì thiếu fact: PR2
-RU54: PR2 -> A11 không được áp dụng, vì thiếu fact: PR2
-RU55: PR2, P8 -> A12 không được áp dụng, vì thiếu fact: PR2
-RU56: PR3, P1 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU57: PR3, P2 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU58: PR3, P3 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU59: PR3, P4 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU60: PR3, P5 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU61: PR3, P6 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU62: PR3, P7 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU63: PR3, P8 -> A15 không được áp dụng, vì thiếu fact: PR3
-RU64: PR3, P1 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU65: PR3, P2 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU66: PR3, P3 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU67: PR3, P4 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU68: PR3, P5 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU69: PR3, P6 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU70: PR3, P7 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU71: PR3, P8 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU72: PR3 -> A18 không được áp dụng, vì thiếu fact: PR3
-RU73: PR4 -> A19 không được áp dụng, vì thiếu fact: PR4
-RU74: PR4, P5 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU75: PR4, P6 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU76: PR4, P7 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU77: PR4, P8 -> A20 không được áp dụng, vì thiếu fact: PR4
-RU78: PR5 -> A21 không được áp dụng, vì thiếu fact: PR5
-RU79: PR5, P1 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU80: PR5, P2 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU81: PR5, P3 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU82: PR5, P4 -> A22 không được áp dụng, vì thiếu fact: PR5
-RU83: PR5, P5 -> A23 không được áp dụng, vì thiếu fact: PR5
-RU84: PR5, P6 -> A23 không được áp dụng, vì thiếu fact: PR5
-RU85: PR5, P7 -> A23 không được áp dụng, vì thiếu fact: PR5
-RU86: PR5, P8 -> A24 không được áp dụng, vì thiếu fact: PR5
-RU87: PR9, P5 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU88: PR9, P6 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU89: PR9, P7 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU90: PR9, P8 -> A25 không được áp dụng, vì thiếu fact: PR9
-RU91: PR12, P1 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU92: PR12, P2 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU93: PR12, P3 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU94: PR12, P4 -> A26 không được áp dụng, vì thiếu fact: PR12
-RU95: PR12, P5 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU96: PR12, P6 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU97: PR12, P7 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU98: PR12, P8 -> A27 không được áp dụng, vì thiếu fact: PR12
-RU99: PR10, P1 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU100: PR10, P2 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU101: PR10, P3 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU102: PR10, P4 -> A28 không được áp dụng, vì thiếu fact: PR10
-RU103: PR10, P5 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU104: PR10, P6 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU105: PR10, P7 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU106: PR10, P8 -> A29 không được áp dụng, vì thiếu fact: PR10
-RU107: PR11, P1 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU108: PR11, P2 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU109: PR11, P3 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU110: PR11, P4 -> A30 không được áp dụng, vì thiếu fact: PR11
-RU111: PR11, P5 -> A31 không được áp dụng, vì thiếu fact: PR11
-RU112: PR11, P6 -> A31 không được áp dụng, vì thiếu fact: PR11
-RU113: PR11, P7 -> A31 không được áp dụng, vì thiếu fact: PR11
-RU114: PR11, P8 -> A32 không được áp dụng, vì thiếu fact: PR11
-RU115: PR11, P5 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU116: PR11, P6 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU117: PR11, P7 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU118: PR11, P8 -> A33 không được áp dụng, vì thiếu fact: PR11
-RU119: ST1 -> A34 không được áp dụng, vì thiếu fact: ST1
-RU120: ST2 -> A35 bỏ qua vì cờ flag1 đã được đánh dấu.
-RU121: ST3 -> A36 không được áp dụng, vì thiếu fact: ST3
-RU122: ST4 -> A37 không được áp dụng, vì thiếu fact: ST4
-RU123: ST5 -> A37 không được áp dụng, vì thiếu fact: ST5
+RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: P1
+RU37: M1, P2 -> A2 bỏ qua vì cờ flag1 đã được đánh dấu.
+RU38: M1, P3 -> A3 không được áp dụng, vì thiếu fact: P3
+RU39: M1, P4 -> A4 không được áp dụng, vì thiếu fact: P4
+RU40: M1, P5 -> A5 không được áp dụng, vì thiếu fact: P5
+RU41: M1, P6 -> A6 không được áp dụng, vì thiếu fact: P6
+RU42: M1, P7 -> A7 không được áp dụng, vì thiếu fact: P7
+RU43: M1, P8 -> A8 không được áp dụng, vì thiếu fact: P8
+RU44: PR2, P1 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU45: PR2, P2 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU46: PR2, P3 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU47: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: PR2
+RU48: PR2, P5 -> A10 không được áp dụng, vì thiếu fact: PR2
+RU49: PR2, P6 -> A10 không được áp dụng, vì thiếu fact: PR2
+RU50: PR2, P7 -> A10 không được áp dụng, vì thiếu fact: PR2
+RU51: PR2 -> A11 không được áp dụng, vì thiếu fact: PR2
+RU52: PR2, P8 -> A12 không được áp dụng, vì thiếu fact: PR2
+RU53: PR3, P1 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU54: PR3, P2 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU55: PR3, P3 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU56: PR3, P4 -> A13 không được áp dụng, vì thiếu fact: PR3
+RU57: PR3, P5 -> A14 không được áp dụng, vì thiếu fact: PR3
+RU58: PR3, P6 -> A14 không được áp dụng, vì thiếu fact: PR3
+RU59: PR3, P7 -> A14 không được áp dụng, vì thiếu fact: PR3
+RU60: PR3, P8 -> A15 không được áp dụng, vì thiếu fact: PR3
+RU61: PR3, P1 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU62: PR3, P2 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU63: PR3, P3 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU64: PR3, P4 -> A16 không được áp dụng, vì thiếu fact: PR3
+RU65: PR3, P5 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU66: PR3, P6 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU67: PR3, P7 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU68: PR3, P8 -> A17 không được áp dụng, vì thiếu fact: PR3
+RU69: PR3 -> A18 không được áp dụng, vì thiếu fact: PR3
+RU70: PR4 -> A19 không được áp dụng, vì thiếu fact: PR4
+RU71: PR4, P5 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU72: PR4, P6 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU73: PR4, P7 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU74: PR4, P8 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU75: PR5 -> A21 không được áp dụng, vì thiếu fact: PR5
+RU76: PR5, P1 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU77: PR5, P2 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU78: PR5, P3 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU79: PR5, P4 -> A22 không được áp dụng, vì thiếu fact: PR5
+RU80: PR5, P5 -> A23 không được áp dụng, vì thiếu fact: PR5
+RU81: PR5, P6 -> A23 không được áp dụng, vì thiếu fact: PR5
+RU82: PR5, P7 -> A23 không được áp dụng, vì thiếu fact: PR5
+RU83: PR5, P8 -> A24 không được áp dụng, vì thiếu fact: PR5
+RU84: PR9, P5 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU85: PR9, P6 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU86: PR9, P7 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU87: PR9, P8 -> A25 không được áp dụng, vì thiếu fact: PR9
+RU88: PR10, P1 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU89: PR10, P2 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU90: PR10, P3 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU91: PR10, P4 -> A28 không được áp dụng, vì thiếu fact: PR10
+RU92: PR10, P5 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU93: PR10, P6 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU94: PR10, P7 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU95: PR10, P8 -> A29 không được áp dụng, vì thiếu fact: PR10
+RU96: PR11, P1 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU97: PR11, P2 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU98: PR11, P3 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU99: PR11, P4 -> A30 không được áp dụng, vì thiếu fact: PR11
+RU100: PR11, P5 -> A31 không được áp dụng, vì thiếu fact: PR11
+RU101: PR11, P6 -> A31 không được áp dụng, vì thiếu fact: PR11
+RU102: PR11, P7 -> A31 không được áp dụng, vì thiếu fact: PR11
+RU103: PR11, P8 -> A32 không được áp dụng, vì thiếu fact: PR11
+RU104: PR11, P5 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU105: PR11, P6 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU106: PR11, P7 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU107: PR11, P8 -> A33 không được áp dụng, vì thiếu fact: PR11
+RU108: ST1 -> A34 không được áp dụng, vì thiếu fact: ST1
+RU109: ST2 -> A35 không được áp dụng, vì thiếu fact: ST2
+RU110: ST3 -> A36 bỏ qua vì cờ flag1 đã được đánh dấu.
+RU111: ST5 -> A37 không được áp dụng, vì thiếu fact: ST5
 ----------------------------------------------------
-Facts sau khi suy diễn: P7, M1, ST2, A7, A35
-Những luật được áp dụng: RU6, RU81
+Facts sau khi suy diễn: P2, M1, ST3, A2, A36
+Những luật được áp dụng: RU2, RU75

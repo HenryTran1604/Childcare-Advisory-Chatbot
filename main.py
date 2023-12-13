@@ -45,7 +45,29 @@ def yes_no_response():
         else:
             user_print(response)
             chatbot_print('Câu trả lời vừa rồi không hợp lệ, vui lòng trả lời có hoặc không!')
-                
+
+def gender_response():
+    gender, age  = None, None
+    while True:
+        response = input()
+        check = 0
+        if 'trai' in response or 'nam' in response:
+            gender = 1
+            check = 1
+        elif 'gái' in response or 'nữ' in response:
+            gender = 0
+            check = 1
+        s = response.split()
+        for x in s:
+            if x.isnumeric():
+                age = int(x)
+                check += 1
+        if check < 2:
+            chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
+        else:
+            user_print(response)
+            break
+    return gender, age
 
 class Main:
     def __init__(self) -> None:
@@ -59,8 +81,8 @@ class Main:
         self.gender = None
         self.status = None
         fc_rules = self.dao.find_all_forward_rules()
-        self.fc_rules_pr = fc_rules[:39]
-        self.fc_rules_ad = fc_rules[39:]
+        self.fc_rules_pr = fc_rules[:35]
+        self.fc_rules_ad = fc_rules[35:]
         self.bc_rules = self.dao.find_all_backward_rules()
     
     def fuzzy(self):
@@ -69,6 +91,7 @@ class Main:
 
     def consult_nutrition_module(self): # tư vấn dinh dưỡng
         self.current_facts.append('M1')
+        print(self.current_facts)
         self.fuzzy()
         self.give_advices()
 
@@ -81,24 +104,9 @@ class Main:
     def gender_question(self):
         chatbot_print("Giới tính con của bạn là gì? Cháu bao nhiêu tháng tuổi rồi?")
         # con tôi là con yyy. Cháu đã xx tháng tuổi rồi
-        response = input()
-        check = 0
-        if 'trai' in response or 'nam' in response:
-            self.gender = 1
-            check = 1
-        elif 'gái' in response or 'nữ' in response:
-            self.gender = 0
-            check = 1
-        s = response.split()
-        for x in s:
-            if x.isnumeric():
-                self.age = int(x)
-                self.identify_period()
-                check = 2
-        if check < 2:
-            chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
-        else:
-            user_print(response)
+        self.gender, self.age = gender_response()
+        self.identify_period()
+        print(self.current_facts)
 
     def identify_period(self):
         if 0 <= self.age < 1:
@@ -162,7 +170,7 @@ class Main:
 
     def health_question(self):
         chatbot_print("Chúng tôi muốn biết tình trạng về **SỨC KHỎE** hiện tại của con bạn")
-        health_symptom_keys = ["SY2", "SY11", "SY43"]
+        health_symptom_keys = ["SY2", "SY11"]
         self.__ask(health_symptom_keys)
 
     def skin_question(self):
@@ -177,7 +185,7 @@ class Main:
 
     def digest_question(self):
         chatbot_print("Chúng tôi muốn biết tình trạng về **TIÊU HÓA** hiện tại của con bạn")
-        digest_symptom_keys = ["SY44", "SY16", "SY17", "SY18", "SY33"]
+        digest_symptom_keys = ["SY16", "SY17", "SY18", "SY33"]
         self.__ask(digest_symptom_keys)
 
     def respiratory_question(self):
@@ -264,9 +272,12 @@ class Main:
         fc = ForwardChaining()
         result = fc.forward_chaining(self.current_facts, self.fc_rules_ad)[2]
         fc.write('ADVICE')
-        advices = [x for x in result if x[0] == 'A']
+        advices = sorted([x for x in result if x[0] == 'A'], key=lambda x : int(x[1:]))
+        problems = sorted([x for x in result if x[:2] == 'PR'])
         if self.status:
             chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')
+        else:
+            chatbot_print(f'Con bạn đang gặp các vấn đề: {", ".join(self.facts[problem] for problem in problems)}')
         if len(advices):
             chatbot_print('Chúng tôi có lời tư vấn cho cách chăm sóc con của bạn như sau:')
             for advice in advices:

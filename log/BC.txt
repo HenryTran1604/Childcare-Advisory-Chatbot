@@ -1,261 +1,192 @@
-103) Goal PR4 Tìm thấy luật: RU157. Các goals phải chứng minh mới: ['SY2', 'SY6', 'SY14', 'SY21', 'SY22', 'SY12']
-104) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-105) -Goal SY6 không có trong fact hiện tại. Luật không được chấp nhận
+I. RULE
+	RU112: SY11, SY6, SY16, SY4, SY8, SY15 -> PR2
+	RU113: SY11, SY6, SY4, SY8, SY15 -> PR2
+	RU114: SY11, SY9, SY10, SY12 -> PR2
+	RU115: SY11, SY4, SY8, SY15 -> PR2
+	RU116: SY11, SY9, SY4, SY15 -> PR2
+	RU117: SY11, SY10, SY12, SY4 -> PR2
+	RU118: SY11, SY10, SY15, SY12 -> PR2
+	RU119: SY13, SY9, SY15, SY12 -> PR2
+	RU120: SY18, SY13, SY10, SY15 -> PR2
+	RU121: SY11, SY4, SY9, SY10 -> PR2
+	RU122: SY11, SY10, SY12, SY4 -> PR2
+	RU123: SY11, SY10, SY15, SY12 -> PR2
+	RU124: SY6, SY13, SY16, SY8, SY9 -> PR2
+	RU125: SY6, SY13, SY18, SY8, SY9 -> PR2
+	RU126: SY6, SY18, SY8, SY9, SY10 -> PR2
+	RU127: SY6, SY16, SY8, SY9, SY10 -> PR2
+	RU128: SY6, SY8, SY9, SY10 -> PR2
+	RU129: SY6, SY4, SY8, SY15 -> PR2
+	RU130: SY6, SY13, SY4, SY9, SY15 -> PR2
+	RU131: SY16, SY18, SY12, SY4 -> PR2
+	RU132: SY16, SY13, SY9, SY15, SY10 -> PR2
+	RU133: SY13, SY18, SY8, SY9 -> PR2
+	RU134: SY13, SY8, SY9, SY10 -> PR2
+	RU135: SY15, SY8, SY9, SY10 -> PR2
+	RU136: SY15, SY4, SY8, SY10 -> PR2
+	RU137: SY14, SY16, SY17, SY33 -> PR3
+	RU138: SY14, SY16, SY17, SY19 -> PR3
+	RU139: SY14, SY17, SY19, SY33 -> PR3
+	RU140: SY14, SY41, SY17 -> PR3
+	RU141: SY41, SY16, SY33 -> PR3
+	RU142: SY41, SY17, SY19 -> PR3
+	RU143: SY41, SY16, SY17, SY33 -> PR3
+	RU144: SY16, SY17, SY19, SY33 -> PR3
+	RU145: SY2, SY6, SY14, SY21, SY22, SY12 -> PR4
+	RU146: SY2, SY6, SY20, SY22 -> PR4
+	RU147: SY2, SY6, SY20, SY12 -> PR4
+	RU148: SY2, SY6, SY20, SY21 -> PR4
+	RU149: SY2, SY14, SY20, SY21 -> PR4
+	RU150: SY2, SY14, SY20, SY22 -> PR4
+	RU151: SY2, SY14, SY20, SY12 -> PR4
+	RU152: SY2, SY20, SY21 -> PR4
+	RU153: SY2, SY20, SY22, SY24 -> PR4
+	RU154: SY20, SY12, SY21 -> PR4
+	RU155: SY2, SY20, SY24, SY12 -> PR4
+	RU156: SY6, SY14, SY20, SY21 -> PR4
+	RU157: SY6, SY14, SY20, SY22 -> PR4
+	RU158: SY6, SY20, SY22, SY12 -> PR4
+	RU159: SY6, SY20, SY21 -> PR4
+	RU160: SY6, SY20, SY12 -> PR4
+	RU161: SY6, SY12, SY24, SY20 -> PR4
+	RU162: SY20, SY22, SY24 -> PR4
+	RU163: SY20, SY22, SY21, SY24 -> PR4
+	RU164: SY20, SY12, SY24 -> PR4
+	RU165: SY5, SY16, SY18, SY27 -> PR5
+	RU166: SY5, SY16, SY26, SY27 -> PR5
+	RU167: SY5, SY18, SY26, SY27 -> PR5
+	RU168: SY5, SY25, SY26, SY27 -> PR5
+	RU169: SY16, SY18, SY27, SY25 -> PR5
+	RU170: SY16, SY25, SY26, SY27 -> PR5
+	RU171: SY16, SY18, SY26, SY27 -> PR5
+	RU172: SY16, SY18, SY25, SY27 -> PR5
+	RU173: SY16, SY26, SY27 -> PR5
+	RU174: SY16, SY25, SY27 -> PR5
+	RU175: SY16, SY18, SY27 -> PR5
+	RU176: SY18, SY25, SY26, SY27 -> PR5
+	RU177: SY18, SY26, SY27 -> PR5
+	RU178: SY11, SY37, SY5, SY16 -> PR9
+	RU179: SY11, SY16, SY37 -> PR9
+	RU180: SY11, SY5, SY37 -> PR9
+	RU181: SY5, SY16, SY37 -> PR9
+	RU182: SY5, SY37 -> PR9
+	RU183: SY1, SY2, SY5, SY37, SY9 -> PR10
+	RU184: SY1, SY2, SY9, SY37 -> PR10
+	RU185: SY1, SY2, SY16, SY9, SY37 -> PR10
+	RU186: SY1, SY37, SY38 -> PR10
+	RU187: SY1, SY9, SY38 -> PR10
+	RU188: SY2, SY40, SY1, SY38 -> PR10
+	RU189: SY1, SY38, SY37 -> PR10
+	RU190: SY38, SY37, SY9 -> PR10
+	RU191: SY40, SY37, SY9 -> PR10
+	RU192: SY1, SY38, SY9 -> PR10
+	RU193: SY5, SY16, SY9, SY40 -> PR10
+	RU194: SY5, SY16, SY40, SY37 -> PR10
+	RU195: SY5, SY9, SY37, SY38 -> PR10
+	RU196: SY5, SY37, SY38 -> PR10
+	RU197: SY5, SY16, SY40, SY38 -> PR10
+	RU198: SY9, SY16, SY38 -> PR10
+	RU199: SY9, SY37, SY38 -> PR10
+	RU200: SY9, SY16, SY37, SY40 -> PR10
+	RU201: SY9, SY16, SY37 -> PR10
+	RU202: SY14, SY39, SY20, SY23 -> PR11
+	RU203: SY14, SY39, SY20, SY12 -> PR11
+	RU204: SY14, SY39, SY1, SY23 -> PR11
+	RU205: SY14, SY39, SY12, SY21 -> PR11
+	RU206: SY14, SY12, SY20, SY21 -> PR11
+	RU207: SY14, SY12, SY20, SY23 -> PR11
+	RU208: SY12, SY20, SY21 -> PR11
+	RU209: SY39, SY12, SY20 -> PR11
+	RU210: SY39, SY20, SY23 -> PR11
+	RU211: SY1, SY39, SY20, SY21 -> PR11
+	RU212: SY1, SY39, SY20 -> PR11
+	RU213: SY1, SY20, SY21 -> PR11
+	RU214: SY12, SY21, SY23 -> PR11
+	RU215: SY1, SY12, SY20 -> PR11
+	RU216: SY39, SY12, SY21, SY20 -> PR11
+	RU217: SY1, SY20, SY12, SY23 -> PR11
+	RU218: SY1, SY12, SY21, SY23 -> PR11
+FACT:
+	P7, SY2, SY41, SY33, SY15, SY21, SY22, SY12, SY24, SY20, PR4, SY9, SY38, SY37, PR10, SY19, SY4, SY8, SY10
+GOAL: PR2
 
-106) Goal PR4 Tìm thấy luật: RU158. Các goals phải chứng minh mới: ['SY2', 'SY6', 'SY20', 'SY22']
-107) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-108) -Goal SY6 không có trong fact hiện tại. Luật không được chấp nhận
+II. INFERENCE
+  2) Goal PR2 Tìm thấy luật: RU112. Các goals phải chứng minh mới: ['SY11', 'SY6', 'SY16', 'SY4', 'SY8', 'SY15']
+  3) -Goal SY11 không có trong fact hiện tại. Luật RU112 không được chấp nhận. Dừng lại
 
-109) Goal PR4 Tìm thấy luật: RU159. Các goals phải chứng minh mới: ['SY2', 'SY6', 'SY20', 'SY12']
-110) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-111) -Goal SY6 không có trong fact hiện tại. Luật không được chấp nhận
+  4) Goal PR2 Tìm thấy luật: RU113. Các goals phải chứng minh mới: ['SY11', 'SY6', 'SY4', 'SY8', 'SY15']
+  5) -Goal SY11 không có trong fact hiện tại. Luật RU113 không được chấp nhận. Dừng lại
 
-112) Goal PR4 Tìm thấy luật: RU160. Các goals phải chứng minh mới: ['SY2', 'SY6', 'SY20', 'SY21']
-113) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-114) -Goal SY6 không có trong fact hiện tại. Luật không được chấp nhận
+  6) Goal PR2 Tìm thấy luật: RU114. Các goals phải chứng minh mới: ['SY11', 'SY9', 'SY10', 'SY12']
+  7) -Goal SY11 không có trong fact hiện tại. Luật RU114 không được chấp nhận. Dừng lại
 
-115) Goal PR4 Tìm thấy luật: RU161. Các goals phải chứng minh mới: ['SY2', 'SY14', 'SY20', 'SY21']
-116) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-117) -Goal SY14 không có trong fact hiện tại. Luật không được chấp nhận
+  8) Goal PR2 Tìm thấy luật: RU115. Các goals phải chứng minh mới: ['SY11', 'SY4', 'SY8', 'SY15']
+  9) -Goal SY11 không có trong fact hiện tại. Luật RU115 không được chấp nhận. Dừng lại
 
-118) Goal PR4 Tìm thấy luật: RU162. Các goals phải chứng minh mới: ['SY2', 'SY14', 'SY20', 'SY22']
-119) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-120) -Goal SY14 không có trong fact hiện tại. Luật không được chấp nhận
+ 10) Goal PR2 Tìm thấy luật: RU116. Các goals phải chứng minh mới: ['SY11', 'SY9', 'SY4', 'SY15']
+ 11) -Goal SY11 không có trong fact hiện tại. Luật RU116 không được chấp nhận. Dừng lại
 
-121) Goal PR4 Tìm thấy luật: RU163. Các goals phải chứng minh mới: ['SY2', 'SY14', 'SY20', 'SY12']
-122) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-123) -Goal SY14 không có trong fact hiện tại. Luật không được chấp nhận
+ 12) Goal PR2 Tìm thấy luật: RU117. Các goals phải chứng minh mới: ['SY11', 'SY10', 'SY12', 'SY4']
+ 13) -Goal SY11 không có trong fact hiện tại. Luật RU117 không được chấp nhận. Dừng lại
 
-124) Goal PR4 Tìm thấy luật: RU164. Các goals phải chứng minh mới: ['SY2', 'SY20', 'SY21']
-125) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-126) -Goal SY20 ghi nhận SY20 vì có trong fact hiện tại
-127) -Goal SY21 ghi nhận SY21 vì có trong fact hiện tại
-128) ==>Goal PR4 Luật đã được chứng minh.
-----------------------------------------------------
-PR4 được chứng minh
-Luật được áp dụng: RU41
+ 14) Goal PR2 Tìm thấy luật: RU118. Các goals phải chứng minh mới: ['SY11', 'SY10', 'SY15', 'SY12']
+ 15) -Goal SY11 không có trong fact hiện tại. Luật RU118 không được chấp nhận. Dừng lại
+
+ 16) Goal PR2 Tìm thấy luật: RU119. Các goals phải chứng minh mới: ['SY13', 'SY9', 'SY15', 'SY12']
+ 17) -Goal SY13 không có trong fact hiện tại. Luật RU119 không được chấp nhận. Dừng lại
+
+ 18) Goal PR2 Tìm thấy luật: RU120. Các goals phải chứng minh mới: ['SY18', 'SY13', 'SY10', 'SY15']
+ 19) -Goal SY18 không có trong fact hiện tại. Luật RU120 không được chấp nhận. Dừng lại
+
+ 20) Goal PR2 Tìm thấy luật: RU121. Các goals phải chứng minh mới: ['SY11', 'SY4', 'SY9', 'SY10']
+ 21) -Goal SY11 không có trong fact hiện tại. Luật RU121 không được chấp nhận. Dừng lại
+
+ 22) Goal PR2 Tìm thấy luật: RU122. Các goals phải chứng minh mới: ['SY11', 'SY10', 'SY12', 'SY4']
+ 23) -Goal SY11 không có trong fact hiện tại. Luật RU122 không được chấp nhận. Dừng lại
+
+ 24) Goal PR2 Tìm thấy luật: RU123. Các goals phải chứng minh mới: ['SY11', 'SY10', 'SY15', 'SY12']
+ 25) -Goal SY11 không có trong fact hiện tại. Luật RU123 không được chấp nhận. Dừng lại
+
+ 26) Goal PR2 Tìm thấy luật: RU124. Các goals phải chứng minh mới: ['SY6', 'SY13', 'SY16', 'SY8', 'SY9']
+ 27) -Goal SY6 không có trong fact hiện tại. Luật RU124 không được chấp nhận. Dừng lại
+
+ 28) Goal PR2 Tìm thấy luật: RU125. Các goals phải chứng minh mới: ['SY6', 'SY13', 'SY18', 'SY8', 'SY9']
+ 29) -Goal SY6 không có trong fact hiện tại. Luật RU125 không được chấp nhận. Dừng lại
+
+ 30) Goal PR2 Tìm thấy luật: RU126. Các goals phải chứng minh mới: ['SY6', 'SY18', 'SY8', 'SY9', 'SY10']
+ 31) -Goal SY6 không có trong fact hiện tại. Luật RU126 không được chấp nhận. Dừng lại
+
+ 32) Goal PR2 Tìm thấy luật: RU127. Các goals phải chứng minh mới: ['SY6', 'SY16', 'SY8', 'SY9', 'SY10']
+ 33) -Goal SY6 không có trong fact hiện tại. Luật RU127 không được chấp nhận. Dừng lại
+
+ 34) Goal PR2 Tìm thấy luật: RU128. Các goals phải chứng minh mới: ['SY6', 'SY8', 'SY9', 'SY10']
+ 35) -Goal SY6 không có trong fact hiện tại. Luật RU128 không được chấp nhận. Dừng lại
+
+ 36) Goal PR2 Tìm thấy luật: RU129. Các goals phải chứng minh mới: ['SY6', 'SY4', 'SY8', 'SY15']
+ 37) -Goal SY6 không có trong fact hiện tại. Luật RU129 không được chấp nhận. Dừng lại
+
+ 38) Goal PR2 Tìm thấy luật: RU130. Các goals phải chứng minh mới: ['SY6', 'SY13', 'SY4', 'SY9', 'SY15']
+ 39) -Goal SY6 không có trong fact hiện tại. Luật RU130 không được chấp nhận. Dừng lại
+
+ 40) Goal PR2 Tìm thấy luật: RU131. Các goals phải chứng minh mới: ['SY16', 'SY18', 'SY12', 'SY4']
+ 41) -Goal SY16 không có trong fact hiện tại. Luật RU131 không được chấp nhận. Dừng lại
+
+ 42) Goal PR2 Tìm thấy luật: RU132. Các goals phải chứng minh mới: ['SY16', 'SY13', 'SY9', 'SY15', 'SY10']
+ 43) -Goal SY16 không có trong fact hiện tại. Luật RU132 không được chấp nhận. Dừng lại
+
+ 44) Goal PR2 Tìm thấy luật: RU133. Các goals phải chứng minh mới: ['SY13', 'SY18', 'SY8', 'SY9']
+ 45) -Goal SY13 không có trong fact hiện tại. Luật RU133 không được chấp nhận. Dừng lại
+
+ 46) Goal PR2 Tìm thấy luật: RU134. Các goals phải chứng minh mới: ['SY13', 'SY8', 'SY9', 'SY10']
+ 47) -Goal SY13 không có trong fact hiện tại. Luật RU134 không được chấp nhận. Dừng lại
+
+ 48) Goal PR2 Tìm thấy luật: RU135. Các goals phải chứng minh mới: ['SY15', 'SY8', 'SY9', 'SY10']
+ 49) -Goal SY15 ghi nhận SY15 vì có trong fact hiện tại
+ 50) -Goal SY8 ghi nhận SY8 vì có trong fact hiện tại
+ 51) -Goal SY9 ghi nhận SY9 vì có trong fact hiện tại
+ 52) -Goal SY10 ghi nhận SY10 vì có trong fact hiện tại
+ 53) ==>Goal PR2 Luật đã được chứng minh.
 ------------------------------------------------------
-129) Goal PR10 Tìm thấy luật: RU195. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY5', 'SY37', 'SY9']
-130) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-131) Goal PR10 Tìm thấy luật: RU196. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY9', 'SY37']
-132) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-133) Goal PR10 Tìm thấy luật: RU197. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY16', 'SY9', 'SY37']
-134) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-135) Goal PR10 Tìm thấy luật: RU198. Các goals phải chứng minh mới: ['SY1', 'SY37', 'SY38']
-136) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-137) Goal PR10 Tìm thấy luật: RU199. Các goals phải chứng minh mới: ['SY1', 'SY9', 'SY38']
-138) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-139) Goal PR10 Tìm thấy luật: RU200. Các goals phải chứng minh mới: ['SY2', 'SY40', 'SY1', 'SY38']
-140) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-141) -Goal SY40 không có trong fact hiện tại. Luật không được chấp nhận
-
-142) Goal PR10 Tìm thấy luật: RU201. Các goals phải chứng minh mới: ['SY1', 'SY38', 'SY37']
-143) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-144) Goal PR10 Tìm thấy luật: RU202. Các goals phải chứng minh mới: ['SY38', 'SY37', 'SY9']
-145) -Goal SY38 không có trong fact hiện tại. Luật không được chấp nhận
-
-146) Goal PR10 Tìm thấy luật: RU203. Các goals phải chứng minh mới: ['SY40', 'SY37', 'SY9']
-147) -Goal SY40 không có trong fact hiện tại. Luật không được chấp nhận
-
-148) Goal PR10 Tìm thấy luật: RU204. Các goals phải chứng minh mới: ['SY1', 'SY38', 'SY9']
-149) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-150) Goal PR10 Tìm thấy luật: RU205. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY9', 'SY40']
-151) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-152) Goal PR10 Tìm thấy luật: RU206. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY40', 'SY37']
-153) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-154) Goal PR10 Tìm thấy luật: RU207. Các goals phải chứng minh mới: ['SY5', 'SY9', 'SY37', 'SY38']
-155) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-156) Goal PR10 Tìm thấy luật: RU208. Các goals phải chứng minh mới: ['SY5', 'SY37', 'SY38']
-157) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-158) Goal PR10 Tìm thấy luật: RU209. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY40', 'SY38']
-159) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-160) Goal PR10 Tìm thấy luật: RU210. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY38']
-161) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-162) Goal PR10 Tìm thấy luật: RU211. Các goals phải chứng minh mới: ['SY9', 'SY37', 'SY38']
-163) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-164) Goal PR10 Tìm thấy luật: RU212. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY37', 'SY40']
-165) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-166) Goal PR10 Tìm thấy luật: RU213. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY37']
-167) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-168) Goal PR10 Không có luật nào thỏa mãn
-----------------------------------------------------
-PR10 không được chứng minh
-------------------------------------------------------
-169) Goal PR10 Tìm thấy luật: RU195. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY5', 'SY37', 'SY9']
-170) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-171) Goal PR10 Tìm thấy luật: RU196. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY9', 'SY37']
-172) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-173) Goal PR10 Tìm thấy luật: RU197. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY16', 'SY9', 'SY37']
-174) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-175) Goal PR10 Tìm thấy luật: RU198. Các goals phải chứng minh mới: ['SY1', 'SY37', 'SY38']
-176) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-177) Goal PR10 Tìm thấy luật: RU199. Các goals phải chứng minh mới: ['SY1', 'SY9', 'SY38']
-178) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-179) Goal PR10 Tìm thấy luật: RU200. Các goals phải chứng minh mới: ['SY2', 'SY40', 'SY1', 'SY38']
-180) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-181) -Goal SY40 ghi nhận SY40 vì có trong fact hiện tại
-182) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-183) Goal PR10 Tìm thấy luật: RU201. Các goals phải chứng minh mới: ['SY1', 'SY38', 'SY37']
-184) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-185) Goal PR10 Tìm thấy luật: RU202. Các goals phải chứng minh mới: ['SY38', 'SY37', 'SY9']
-186) -Goal SY38 không có trong fact hiện tại. Luật không được chấp nhận
-
-187) Goal PR10 Tìm thấy luật: RU203. Các goals phải chứng minh mới: ['SY40', 'SY37', 'SY9']
-188) -Goal SY40 ghi nhận SY40 vì có trong fact hiện tại
-189) -Goal SY37 không có trong fact hiện tại. Luật không được chấp nhận
-
-190) Goal PR10 Tìm thấy luật: RU204. Các goals phải chứng minh mới: ['SY1', 'SY38', 'SY9']
-191) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-192) Goal PR10 Tìm thấy luật: RU205. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY9', 'SY40']
-193) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-194) Goal PR10 Tìm thấy luật: RU206. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY40', 'SY37']
-195) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-196) Goal PR10 Tìm thấy luật: RU207. Các goals phải chứng minh mới: ['SY5', 'SY9', 'SY37', 'SY38']
-197) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-198) Goal PR10 Tìm thấy luật: RU208. Các goals phải chứng minh mới: ['SY5', 'SY37', 'SY38']
-199) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-200) Goal PR10 Tìm thấy luật: RU209. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY40', 'SY38']
-201) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-202) Goal PR10 Tìm thấy luật: RU210. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY38']
-203) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-204) Goal PR10 Tìm thấy luật: RU211. Các goals phải chứng minh mới: ['SY9', 'SY37', 'SY38']
-205) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-206) Goal PR10 Tìm thấy luật: RU212. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY37', 'SY40']
-207) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-208) Goal PR10 Tìm thấy luật: RU213. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY37']
-209) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-210) Goal PR10 Không có luật nào thỏa mãn
-----------------------------------------------------
-PR10 không được chứng minh
-------------------------------------------------------
-211) Goal PR10 Tìm thấy luật: RU195. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY5', 'SY37', 'SY9']
-212) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-213) Goal PR10 Tìm thấy luật: RU196. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY9', 'SY37']
-214) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-215) Goal PR10 Tìm thấy luật: RU197. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY16', 'SY9', 'SY37']
-216) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-217) Goal PR10 Tìm thấy luật: RU198. Các goals phải chứng minh mới: ['SY1', 'SY37', 'SY38']
-218) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-219) Goal PR10 Tìm thấy luật: RU199. Các goals phải chứng minh mới: ['SY1', 'SY9', 'SY38']
-220) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-221) Goal PR10 Tìm thấy luật: RU200. Các goals phải chứng minh mới: ['SY2', 'SY40', 'SY1', 'SY38']
-222) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-223) -Goal SY40 ghi nhận SY40 vì có trong fact hiện tại
-224) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-225) Goal PR10 Tìm thấy luật: RU201. Các goals phải chứng minh mới: ['SY1', 'SY38', 'SY37']
-226) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-227) Goal PR10 Tìm thấy luật: RU202. Các goals phải chứng minh mới: ['SY38', 'SY37', 'SY9']
-228) -Goal SY38 ghi nhận SY38 vì có trong fact hiện tại
-229) -Goal SY37 không có trong fact hiện tại. Luật không được chấp nhận
-
-230) Goal PR10 Tìm thấy luật: RU203. Các goals phải chứng minh mới: ['SY40', 'SY37', 'SY9']
-231) -Goal SY40 ghi nhận SY40 vì có trong fact hiện tại
-232) -Goal SY37 không có trong fact hiện tại. Luật không được chấp nhận
-
-233) Goal PR10 Tìm thấy luật: RU204. Các goals phải chứng minh mới: ['SY1', 'SY38', 'SY9']
-234) -Goal SY1 không có trong fact hiện tại. Luật không được chấp nhận
-
-235) Goal PR10 Tìm thấy luật: RU205. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY9', 'SY40']
-236) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-237) Goal PR10 Tìm thấy luật: RU206. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY40', 'SY37']
-238) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-239) Goal PR10 Tìm thấy luật: RU207. Các goals phải chứng minh mới: ['SY5', 'SY9', 'SY37', 'SY38']
-240) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-241) Goal PR10 Tìm thấy luật: RU208. Các goals phải chứng minh mới: ['SY5', 'SY37', 'SY38']
-242) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-243) Goal PR10 Tìm thấy luật: RU209. Các goals phải chứng minh mới: ['SY5', 'SY16', 'SY40', 'SY38']
-244) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-245) Goal PR10 Tìm thấy luật: RU210. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY38']
-246) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-247) Goal PR10 Tìm thấy luật: RU211. Các goals phải chứng minh mới: ['SY9', 'SY37', 'SY38']
-248) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-249) Goal PR10 Tìm thấy luật: RU212. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY37', 'SY40']
-250) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-251) Goal PR10 Tìm thấy luật: RU213. Các goals phải chứng minh mới: ['SY9', 'SY16', 'SY37']
-252) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-253) Goal PR10 Không có luật nào thỏa mãn
-----------------------------------------------------
-PR10 không được chứng minh
-------------------------------------------------------
-254) Goal PR10 Tìm thấy luật: RU195. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY5', 'SY37', 'SY9']
-255) -Goal SY1 ghi nhận SY1 vì có trong fact hiện tại
-256) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-257) -Goal SY5 không có trong fact hiện tại. Luật không được chấp nhận
-
-258) Goal PR10 Tìm thấy luật: RU196. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY9', 'SY37']
-259) -Goal SY1 ghi nhận SY1 vì có trong fact hiện tại
-260) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-261) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-262) Goal PR10 Tìm thấy luật: RU197. Các goals phải chứng minh mới: ['SY1', 'SY2', 'SY16', 'SY9', 'SY37']
-263) -Goal SY1 ghi nhận SY1 vì có trong fact hiện tại
-264) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-265) -Goal SY16 không có trong fact hiện tại. Luật không được chấp nhận
-
-266) Goal PR10 Tìm thấy luật: RU198. Các goals phải chứng minh mới: ['SY1', 'SY37', 'SY38']
-267) -Goal SY1 ghi nhận SY1 vì có trong fact hiện tại
-268) -Goal SY37 không có trong fact hiện tại. Luật không được chấp nhận
-
-269) Goal PR10 Tìm thấy luật: RU199. Các goals phải chứng minh mới: ['SY1', 'SY9', 'SY38']
-270) -Goal SY1 ghi nhận SY1 vì có trong fact hiện tại
-271) -Goal SY9 không có trong fact hiện tại. Luật không được chấp nhận
-
-272) Goal PR10 Tìm thấy luật: RU200. Các goals phải chứng minh mới: ['SY2', 'SY40', 'SY1', 'SY38']
-273) -Goal SY2 ghi nhận SY2 vì có trong fact hiện tại
-274) -Goal SY40 ghi nhận SY40 vì có trong fact hiện tại
-275) -Goal SY1 ghi nhận SY1 vì có trong fact hiện tại
-276) -Goal SY38 ghi nhận SY38 vì có trong fact hiện tại
-277) ==>Goal PR10 Luật đã được chứng minh.
-----------------------------------------------------
-PR10 được chứng minh
-Luật được áp dụng: RU77
+PR2 được chứng minh
+Luật được áp dụng: RU135
 ------------------------------------------------------

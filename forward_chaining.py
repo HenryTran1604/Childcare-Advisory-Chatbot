@@ -1,5 +1,3 @@
-from rule import Rule
-from dao import DAO
 class ForwardChaining:
     def __init__(self) -> None:
         self.log = ''

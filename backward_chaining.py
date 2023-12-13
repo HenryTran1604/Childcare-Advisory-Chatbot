@@ -1,5 +1,3 @@
-from rule import Rule
-from dao import DAO
 class BackwardChaining:
     def __init__(self):
         self.log = ''
@@ -8,9 +6,9 @@ class BackwardChaining:
 #        print(*self.bc_rules, sep='\n')
 
     def backward_chaining(self, facts, goal, bc_rules):
-        if self.iter == 0:
-            self.log_rules_facts(facts, goal, bc_rules)
-            self.log += '\nII. INFERENCE\n'
+        self.iter = 1
+        self.log_rules_facts(facts, goal, bc_rules)
+        self.log += '\nII. INFERENCE\n'
         is_satisfy = False 
         for rule in bc_rules:
             out_facts = False 
@@ -19,13 +17,13 @@ class BackwardChaining:
                 for i in range(len(rule.antecedent)):
                     fact_guess = rule.antecedent[i]
                     if fact_guess not in facts:
-                        self.log_step(fact_guess, '-', f'không có trong fact hiện tại. Luật không được chấp nhận\n')
+                        self.log_step(fact_guess, '-', f'không có trong fact hiện tại. Luật {rule.id} không được chấp nhận. Dừng lại\n')
                         out_facts = True
                         break
                     else:
                         self.log_step(fact_guess, '-', f'ghi nhận {fact_guess} vì có trong fact hiện tại')
 
-                self.road="RU" + str(bc_rules.index(rule) + 1)
+                self.road = rule.id
                 
                 if not out_facts: 
                     is_satisfy = True
@@ -44,12 +42,11 @@ class BackwardChaining:
         for rule in bc_rules:
             self.log += f'\t{rule}\n'
         self.log += 'FACT:\n\t'
-        for fact in facts:
-            self.log += fact + ", "
-        self.log += 'GOAL: ' + goal + '\n'
+        self.log += ', '.join(facts)
+        self.log += '\nGOAL: ' + goal + '\n'
 
     def log_result(self, result, goal):
-        self.log += '----------------------------------------------------\n'
+        self.log += '------------------------------------------------------\n'
         if result:
             self.log += f'{goal} được chứng minh\n'
             self.log += f'Luật được áp dụng: {self.road}\n'
@@ -58,7 +55,7 @@ class BackwardChaining:
         self.log += '------------------------------------------------------\n'
 
     def write(self, file_name):
-        with open(f'log\{file_name}.txt', encoding='utf8', mode='a') as f:
+        with open(f'log\{file_name}.txt', encoding='utf8', mode='w') as f:
             f.writelines(self.log)
         self.log = ''
 #BackwardChaining()
