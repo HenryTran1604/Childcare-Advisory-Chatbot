@@ -3,71 +3,7 @@ from backward_chaining import BackwardChaining
 from dao import DAO
 from fuzzy import caculate
 from helper import *
-import re
-
-
-def validate_number(self, datatype, value):
-    try:
-        target_value = datatype(value)
-        return target_value
-    except:
-        return None
-
-def symptoms_response(max):
-    while True:
-        response = input()
-        s = re.split('\s+|,+|\.', response)
-        ans, is_valid = [], True
-        for x in s:
-            try:
-                x = int(x)
-                if x < 0 or x > max:
-                    is_valid = False
-                    break
-                ans.append(x)
-            except:
-                is_valid = False
-        if is_valid:
-            break
-        else:
-            user_print(response)
-            chatbot_print('Câu trả lời vừa rồi không hợp lệ, vui lòng nhập lại!')
-
-    return ans
-
-def yes_no_response():
-    while True:
-        response = input()
-        if response.lower() in ['1', 'yes', 'có']:
-            return True
-        elif response.lower() in ['0', 'no', 'không']:
-            return False
-        else:
-            user_print(response)
-            chatbot_print('Câu trả lời vừa rồi không hợp lệ, vui lòng trả lời có hoặc không!')
-
-def gender_response():
-    gender, age  = None, None
-    while True:
-        response = input()
-        check = 0
-        if 'trai' in response or 'nam' in response:
-            gender = 1
-            check = 1
-        elif 'gái' in response or 'nữ' in response:
-            gender = 0
-            check = 1
-        s = response.split()
-        for x in s:
-            if x.isnumeric():
-                age = int(x)
-                check += 1
-        if check < 2:
-            chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
-        else:
-            user_print(response)
-            break
-    return gender, age
+from validation import *
 
 class Main:
     def __init__(self) -> None:
@@ -90,8 +26,8 @@ class Main:
         self.current_facts.append(self.status)
 
     def consult_nutrition_module(self): # tư vấn dinh dưỡng
+        self.height_weight_question()
         self.current_facts.append('M1')
-        print(self.current_facts)
         self.fuzzy()
         self.give_advices()
 
@@ -99,14 +35,18 @@ class Main:
         self.confirm()
 
     def greeting(self):
-        pass
+        chatbot_print('Xin chào! Tôi là chatbot tư vấn dinh dưỡng và vận động cho trẻ từ 0 - 2 tuổi!')
+        chatbot_print2('Bạn vui lòng trả lời những câu hỏi phía dưới để tôi có thể hỗ trợ!')
+    
+    def farewell(self):
+        print()
+        chatbot_print('Cảm ơn bạn đã sử dụng hệ thống. Hẹn gặp lại!')
 
     def gender_question(self):
         chatbot_print("Giới tính con của bạn là gì? Cháu bao nhiêu tháng tuổi rồi?")
         # con tôi là con yyy. Cháu đã xx tháng tuổi rồi
         self.gender, self.age = gender_response()
         self.identify_period()
-        print(self.current_facts)
 
     def identify_period(self):
         if 0 <= self.age < 1:
@@ -131,24 +71,8 @@ class Main:
         question = "Con của bạn có chiều cao (cm), cân nặng (kg) là bao nhiêu? (Vui lòng nhập đúng thứ tự và đơn vị)"
         # con tôi nặng xx kg và cao yy cm
         chatbot_print(question)
-        response = input()
-        s, cnt = response.split(), 0
-        for x in s:
-            try:
-                x = float(x)
-                if self.height == 0:
-                    cnt += 1
-                    self.height = float(x)
-                else:
-                    cnt += 1
-                    self.weight = float(x)
-            except:
-                pass
-        if cnt == 2:
-            user_print(f"Con tôi cao {self.height} cm và có cân nặng {self.weight} kg")
-#            print(self.facts[self.current_facts[-1]])
-        else:
-            chatbot_print('Tôi chưa nắm được thông tin bạn vừa nhập! Vui lòng nhập lại')
+        self.height, self.weight = height_weight_response()
+        
 
     def __ask(self, question_keys):
         chatbot_print("Con của bạn có dấu hiệu nào trong các đặc điểm sau hay không?")
@@ -275,10 +199,10 @@ class Main:
         advices = sorted([x for x in result if x[0] == 'A'], key=lambda x : int(x[1:]))
         problems = sorted([x for x in result if x[:2] == 'PR'])
         if self.status:
-            chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')
-        else:
-            chatbot_print(f'Con bạn đang gặp các vấn đề: {", ".join(self.facts[problem] for problem in problems)}')
+            chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')            
         if len(advices):
+            if self.status == None:
+                chatbot_print(f'Con bạn đang gặp các vấn đề: {", ".join(self.facts[problem] for problem in problems)}')
             chatbot_print('Chúng tôi có lời tư vấn cho cách chăm sóc con của bạn như sau:')
             for advice in advices:
                 chatbot_print2(self.facts[advice])
@@ -286,16 +210,24 @@ class Main:
             chatbot_print('Có vẻ con bạn đang không gặp các vấn đề mà hệ thống của chúng tôi có thể giải quyết.')
 
     def run(self):
+        self.greeting()
         self.gender_question()
-        self.height_weight_question()
         chatbot_print('Bạn muốn nhận lời khuyên từ mục nào?')
         chatbot_print2('1. Tư vấn dinh dưỡng và vận động')
         chatbot_print2('2. Tư vấn về các vấn đề sức khỏe')
-        ans = int(input())
-        if ans == 2:
-            self.issue_resolution_module()
-        else:
-            self.consult_nutrition_module()
+        ans = input()
+        while True:
+            if ans == '2':
+                user_print('Tôi muốn tư vấn về các vấn đề sức khỏe')
+                self.issue_resolution_module()
+                break
+            elif ans == '1':
+                user_print('Tôi muốn tư vấn về các vấn đề sức khỏe')
+                self.consult_nutrition_module()
+                break
+            else:
+                chatbot_print('Vui lòng nhập lại!')
+        self.farewell()
 
 
 main = Main()
