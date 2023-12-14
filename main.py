@@ -167,7 +167,7 @@ class Main:
                 continue
             chatbot_print(f'Chúng tôi muốn xác nhận liệu con bạn có đang bị {self.facts[reason]} hay không.')
             chatbot_print2('Vui lòng trả lời có hoặc không những câu hỏi sau đây')
-            remain_symps = list(self.dao.find_all_symtoms_by_reason(reason) - set(self.current_facts) - asked_symptoms - set(self.negative_facts))
+            remain_symps = sorted(self.dao.find_all_symtoms_by_reason(reason) - set(self.current_facts) - asked_symptoms - set(self.negative_facts))
             found = False
             while len(remain_symps) > 0:
                 symp = remain_symps.pop()

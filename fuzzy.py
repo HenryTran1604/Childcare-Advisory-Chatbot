@@ -74,7 +74,7 @@ def caculate(gender, age, weight, height):
     st5_rate = max(min(weight_fuzzy.high, height_fuzzy.low), min(weight_fuzzy.high, height_fuzzy.mid), min(weight_fuzzy.high, height_fuzzy.high))
     rates = [st1_rate, st2_rate, st3_rate, st4_rate, st5_rate]
     log += f'Tỷ lệ của [ST1, ST2, ST3, ST4, ST5] = {rates}\n'
-    print(rates)
+    # print(rates)
     fuzzy_file = open('log/fuzzy.txt', 'w', encoding='utf8')
     fuzzy_file.writelines(log)
     return f'ST{numpy.argmax(rates) + 1}'
