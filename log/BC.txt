@@ -107,7 +107,7 @@ I. RULE
 	RU217: SY1, SY20, SY12, SY23 -> PR11
 	RU218: SY1, SY12, SY21, SY23 -> PR11
 FACT:
-	P7, SY11, SY6, SY13, SY15, SY10, SY12, PR2, SY21, SY20
+	P7, SY11, SY6, SY13, SY15, SY4, SY8, PR2, SY21, SY20
 GOAL: PR4
 
 II. INFERENCE
@@ -140,10 +140,30 @@ II. INFERENCE
 
  20) Goal PR4 Tìm thấy luật: RU154. Các goals phải chứng minh mới: ['SY20', 'SY12', 'SY21']
  21) -Goal SY20 ghi nhận SY20 vì có trong fact hiện tại
- 22) -Goal SY12 ghi nhận SY12 vì có trong fact hiện tại
- 23) -Goal SY21 ghi nhận SY21 vì có trong fact hiện tại
- 24) ==>Goal PR4 Luật đã được chứng minh.
+ 22) -Goal SY12 không có trong fact hiện tại. Luật RU154 không được chấp nhận. Dừng lại
+
+ 23) Goal PR4 Tìm thấy luật: RU155. Các goals phải chứng minh mới: ['SY2', 'SY20', 'SY24', 'SY12']
+ 24) -Goal SY2 không có trong fact hiện tại. Luật RU155 không được chấp nhận. Dừng lại
+
+ 25) Goal PR4 Tìm thấy luật: RU156. Các goals phải chứng minh mới: ['SY6', 'SY14', 'SY20', 'SY21']
+ 26) -Goal SY6 ghi nhận SY6 vì có trong fact hiện tại
+ 27) -Goal SY14 không có trong fact hiện tại. Luật RU156 không được chấp nhận. Dừng lại
+
+ 28) Goal PR4 Tìm thấy luật: RU157. Các goals phải chứng minh mới: ['SY6', 'SY14', 'SY20', 'SY22']
+ 29) -Goal SY6 ghi nhận SY6 vì có trong fact hiện tại
+ 30) -Goal SY14 không có trong fact hiện tại. Luật RU157 không được chấp nhận. Dừng lại
+
+ 31) Goal PR4 Tìm thấy luật: RU158. Các goals phải chứng minh mới: ['SY6', 'SY20', 'SY22', 'SY12']
+ 32) -Goal SY6 ghi nhận SY6 vì có trong fact hiện tại
+ 33) -Goal SY20 ghi nhận SY20 vì có trong fact hiện tại
+ 34) -Goal SY22 không có trong fact hiện tại. Luật RU158 không được chấp nhận. Dừng lại
+
+ 35) Goal PR4 Tìm thấy luật: RU159. Các goals phải chứng minh mới: ['SY6', 'SY20', 'SY21']
+ 36) -Goal SY6 ghi nhận SY6 vì có trong fact hiện tại
+ 37) -Goal SY20 ghi nhận SY20 vì có trong fact hiện tại
+ 38) -Goal SY21 ghi nhận SY21 vì có trong fact hiện tại
+ 39) ==>Goal PR4 Luật đã được chứng minh.
 ------------------------------------------------------
 PR4 được chứng minh
-Luật được áp dụng: RU154
+Luật được áp dụng: RU159
 ------------------------------------------------------

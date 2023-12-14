@@ -74,19 +74,26 @@ class Main:
         
 
     def __ask(self, question_keys):
-        chatbot_print("Con của bạn có dấu hiệu nào trong các đặc điểm sau hay không?")
-        for i, key in enumerate(question_keys):
-            if key not in self.current_facts:
-                options_print(f"{i + 1}: [{key}] {self.facts[key]}")
-        options_print("0. Con tôi không có triệu chứng nào ở trên")
-        ans = symptoms_response(max=len(question_keys))
-        if len(ans) == 1 and ans[0] == 0:
-            user_print(f'Con tôi không có dấu hiệu nào kể trên')
-        else:
-            user_print(f"Con tôi có dấu hiệu: {ans}")
-            for x in ans:
-                if x != 0:
-                    self.current_facts.append(question_keys[x - 1])
+        ans = []
+        while True:
+            chatbot_print("Con của bạn có dấu hiệu nào trong các đặc điểm sau hay không?")
+            for i, key in enumerate(question_keys):
+                if key not in self.current_facts:
+                    options_print(f"{i + 1}: [{key}] {self.facts[key]}")
+            options_print("0. Con tôi không có triệu chứng nào ở trên")
+            response = symptoms_response(max=len(question_keys), exist=ans)
+
+            if len(response) == 1 and response[0] == 0:
+                user_print(f'Con tôi không có dấu hiệu nào kể trên')
+                break
+            else:
+                ans.extend(response)
+                user_print(f"Con tôi có dấu hiệu: {ans}")
+                for x in response:
+                    if x != 0:
+                        self.current_facts.append(question_keys[x - 1])
+                if len(ans) == len(question_keys):
+                    break
         for key in question_keys:
             if key not in self.current_facts:
                 self.negative_facts.append(key)
@@ -179,14 +186,18 @@ class Main:
                         break
                 else:
                     user_print('Không')
+                
             if not found:
                 chatbot_print(f'Có vẻ con bạn không bị [{reason}] {self.facts[reason]}')
             if i < len(predict_reasons) - 1:
                 chatbot_print('Bạn có muốn tiếp tục suy luận hay muốn nhận lời khuyên? (1 - tiếp tục, 0 - nhận lời khuyên)')
-                tmp = int(input())
-                if tmp == 0:
+                tmp = input()
+                if tmp == '0':
+                    user_print('Đưa cho tôi lời khuyên')
                     self.give_advices()
                     return
+                else:
+                    user_print('Tiếp tục')
         self.give_advices()
 
 
@@ -211,19 +222,19 @@ class Main:
     def run(self):
         self.greeting()
         self.gender_question()
-        self.height_weight_question()
         chatbot_print('Bạn muốn nhận lời khuyên từ mục nào?')
         chatbot_print2('1. Tư vấn dinh dưỡng và vận động')
         chatbot_print2('2. Tư vấn về các vấn đề sức khỏe')
         ans = input()
         while True:
-            if ans == '2':
+            if ans == '1':
+                user_print('Tôi muốn tư vấn về dinh dưỡng và vận động')
+                self.height_weight_question()
+                self.consult_nutrition_module()
+                break
+            elif ans == '2':
                 user_print('Tôi muốn tư vấn về các vấn đề sức khỏe')
                 self.issue_resolution_module()
-                break
-            elif ans == '1':
-                user_print('Tôi muốn tư vấn về các vấn đề sức khỏe')
-                self.consult_nutrition_module()
                 break
             else:
                 chatbot_print('Vui lòng nhập lại!')

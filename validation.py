@@ -1,6 +1,6 @@
 from helper import *
 import re
-def symptoms_response(max):
+def symptoms_response(max, exist):
     while True:
         response = input()
         s = re.split('\s+|,+|\.', response)
@@ -11,7 +11,8 @@ def symptoms_response(max):
                 if x < 0 or x > max:
                     is_valid = False
                     break
-                ans.append(x)
+                if x not in exist:
+                    ans.append(x)
             except:
                 is_valid = False
         if is_valid:
@@ -73,10 +74,10 @@ def height_weight_response():
                     weight = float(x)
             except:
                 pass
-        if height < 0 or height > 120 or weight < 0 or weight > 34:
+        if height <= 0 or height > 120 or weight <= 0 or weight > 34 or cnt != 2:
             user_print(response)
             chatbot_print('Vui lòng nhập lại chiều cao và cân nặng!')
-        if cnt == 2:
+        else:
             user_print(f"Con tôi cao {height} cm và có cân nặng {weight} kg")
             break
     return height, weight
