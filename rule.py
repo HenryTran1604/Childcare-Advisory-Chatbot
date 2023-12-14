@@ -3,8 +3,7 @@ class Rule:
         self.id = id
         self.antecedent = antecedent
         self.consequent = consequent
-        self.flag1 = False
-        self.flag2 = False
+        self.is_fired = False
 
     def follows(self, facts):
         for fact in self.antecedent:

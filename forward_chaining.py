@@ -12,27 +12,22 @@ class ForwardChaining:
             rule_applied = False
             for rule in fc_rules:
                 self.log += str(rule)
-                if rule.flag1: # nếu luạt đã được cm rồi
-                    self.log += ' bỏ qua vì cờ flag1 đã được đánh dấu.\n'
+                if rule.is_fired: # nếu luạt đã được chứng minh rồi
+                    self.log += ' bỏ qua vì cờ is_fired đã được đánh dấu.\n'
                     continue
 
-                if rule.flag2: 
-                    self.log += ' bỏ qua vì cờ flag2 đã được đánh dấu.\n'
-                    continue
-
-                if rule.consequent in facts:# nếu vế phải đã được cm rồi
-                    self.log += ' bỏ qua vì vế phải đã tồn tại trong facts, cập nhật flag2.\n'
-                    rule.flag2 = True
+                if rule.consequent in facts:# nếu vế phải đã nằm trong facts
+                    self.log += ' bỏ qua vì vế phải đã tồn tại trong facts.\n'
                     continue
 
                 missing = rule.follows(facts) # tìm xem là có fact nào thiếu để kết luận luật đúng hay không 
 
                 if missing is None:
                     rule_applied = True
-                    rule.flag1 = True
+                    rule.is_fired = True
                     facts.append(rule.consequent)
-                    road.append("RU" + str(fc_rules.index(rule) + 1))
-                    self.log += f' áp dụng, cập nhật flag1. Facts {", ".join(facts[:pos])} => {", ".join(facts[pos:])}\n'
+                    road.append(rule.id)
+                    self.log += f' áp dụng, cập nhật is_fired. Facts {", ".join(facts[:pos])} => {", ".join(facts[pos:])}\n'
                     break
                 else: # do vế trái thiếu mất fact
                     self.log += " không được áp dụng, vì thiếu fact: %s\n" % missing
