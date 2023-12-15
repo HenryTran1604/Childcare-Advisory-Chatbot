@@ -34,50 +34,45 @@ def yes_no_response():
             chatbot_print('Câu trả lời vừa rồi không hợp lệ, vui lòng trả lời có hoặc không!')
 
 def gender_response():
-    gender, age  = None, None
+    gender= None
     while True:
-        response = input()
-        check = 0
-        if 'trai' in response or 'nam' in response:
+        response = input().strip()
+        if response == '1':
+            user_print('Nam')
             gender = 1
-            check = 1
-        elif 'gái' in response or 'nữ' in response:
+            break
+        elif response == '0':
+            user_print('Nữ')
             gender = 0
-            check = 1
-        s = response.split()
-        for x in s:
-            if x.isnumeric():
-                age = int(x)
-                check += 1
-        if check < 2 or age < 0 or age > 24:
-            user_print(response)
-            chatbot_print('Vui lòng chọn giới tính (nam/nữ) và tháng tuổi trong khoảng [0, 24]')
-        else:
-            user_print(response)
             break
-    return gender, age
+        else :
+            user_print(response)
+            chatbot_print('Vui lòng chọn giới tính (nam: 1, nữ:0)')
+    return gender
 
-
-def height_weight_response():
+def age_response():
+    age= None
     while True:
-        response = input()
-        height, weight = 0, 0
-        s, cnt = response.split(), 0
-        for x in s:
-            try:
-                x = float(x)
-                if height == 0:
-                    cnt += 1
-                    height = float(x)
-                else:
-                    cnt += 1
-                    weight = float(x)
-            except:
-                pass
-        if height <= 0 or height > 120 or weight <= 0 or weight > 34 or cnt != 2:
-            user_print(response)
-            chatbot_print('Vui lòng nhập lại chiều cao và cân nặng!')
-        else:
-            user_print(f"Con tôi cao {height} cm và có cân nặng {weight} kg")
+        response = input().strip()
+        try:
+            age = int(response.strip())
+            user_print(age)
             break
-    return height, weight
+        except:
+            user_print(response)
+            chatbot_print('Vui lòng nhập lại tháng tuổi [0; 24]')
+    return age
+
+
+def numeric_response(error):
+    num = 0.0
+    while True:
+        response = input().strip()
+        try:
+            num = float(response)
+            user_print(response)
+            break
+        except:
+            user_print(response)
+            chatbot_print(error)
+    return num

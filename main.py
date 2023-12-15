@@ -41,11 +41,15 @@ class Main:
         print()
         chatbot_print('Cảm ơn bạn đã sử dụng hệ thống. Hẹn gặp lại!')
 
-    def gender_age_question(self): # câu hỏi về giới tính và tuổi
-        chatbot_print("Giới tính con của bạn là gì? Cháu bao nhiêu tháng tuổi rồi?")
-        # con tôi là con yyy. Cháu đã xx tháng tuổi rồi
-        self.gender, self.age = gender_response()
+    def age_question(self):
+        chatbot_print('Con của bạn bao nhiêu THÁNG tuổi rổi? (0- 24)')
+        self.age = age_response()
         self.identify_period()
+
+    def gender_question(self): # câu hỏi về giới tính và tuổi
+        chatbot_print("Giới tính con của bạn là gì? (nam: 1, nữ: 0)")
+        # con tôi là con yyy. Cháu đã xx tháng tuổi rồi
+        self.gender = gender_response()
 
     def identify_period(self):
         if 0 <= self.age < 1:
@@ -66,12 +70,16 @@ class Main:
             period = "P8"
         self.current_facts.append(period)
 
-    def height_weight_question(self): # câu hỏi về chiều cao cân nặng
-        question = "Con của bạn có chiều cao (cm), cân nặng (kg) là bao nhiêu? (Vui lòng nhập đúng thứ tự và đơn vị)"
+    def height_question(self): # câu hỏi về chiều cao
+        question = "Con của bạn cao bao nhiêu cm?"
         # con tôi nặng xx kg và cao yy cm
         chatbot_print(question)
-        self.height, self.weight = height_weight_response()
+        self.height = numeric_response('Vui lòng nhập lại chiều cao (0 - 120) cm!')
         
+    def weight_question(self):
+        question = 'Con của bạn nặng bao nhiêu kg?'
+        chatbot_print(question)
+        self.weight = numeric_response('Vui lòng nhập lại cân nặng (0 - 34) kg!')
 
     def __ask(self, question_keys):
         ans = []
@@ -220,7 +228,7 @@ class Main:
 
     def run(self):
         self.greeting()
-        self.gender_age_question()
+        self.age_question()
         chatbot_print('Bạn muốn nhận lời khuyên từ mục nào?')
         chatbot_print2('1. Tư vấn dinh dưỡng và vận động')
         chatbot_print2('2. Tư vấn về các vấn đề sức khỏe')
@@ -228,7 +236,9 @@ class Main:
         while True:
             if ans == '1':
                 user_print('Tôi muốn tư vấn về dinh dưỡng và vận động')
-                self.height_weight_question()
+                self.gender_question()
+                self.height_question()
+                self.weight_question()
                 self.consult_nutrition_module()
                 break
             elif ans == '2':

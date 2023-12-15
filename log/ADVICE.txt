@@ -76,7 +76,7 @@ I. RULE
 	RU110: ST3 -> A36
 	RU111: ST5 -> A37
 FACT:
-	P7, SY11, SY6, SY13, SY15, SY8, SY4, PR2, SY21, SY20, PR4, 
+	P7, SY11, SY6, SY13, SY15, SY9, SY4, PR2, 
 II. INFERENCE
 -----------ITERATION 1------------
 RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: M1
@@ -93,7 +93,7 @@ RU46: PR2, P3 -> A9 không được áp dụng, vì thiếu fact: P3
 RU47: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: P4
 RU48: PR2, P5 -> A10 không được áp dụng, vì thiếu fact: P5
 RU49: PR2, P6 -> A10 không được áp dụng, vì thiếu fact: P6
-RU50: PR2, P7 -> A10 áp dụng, cập nhật is_fired. Facts P7, SY11, SY6, SY13, SY15, SY8, SY4, PR2, SY21, SY20, PR4 => A10
+RU50: PR2, P7 -> A10 áp dụng, cập nhật is_fired. Facts P7, SY11, SY6, SY13, SY15, SY9, SY4, PR2 => A10
 -----------ITERATION 2------------
 RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: M1
 RU37: M1, P2 -> A2 không được áp dụng, vì thiếu fact: M1
@@ -110,7 +110,7 @@ RU47: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: P4
 RU48: PR2, P5 -> A10 bỏ qua vì vế phải đã tồn tại trong facts.
 RU49: PR2, P6 -> A10 bỏ qua vì vế phải đã tồn tại trong facts.
 RU50: PR2, P7 -> A10 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU51: PR2 -> A11 áp dụng, cập nhật is_fired. Facts P7, SY11, SY6, SY13, SY15, SY8, SY4, PR2, SY21, SY20, PR4 => A10, A11
+RU51: PR2 -> A11 áp dụng, cập nhật is_fired. Facts P7, SY11, SY6, SY13, SY15, SY9, SY4, PR2 => A10, A11
 -----------ITERATION 3------------
 RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: M1
 RU37: M1, P2 -> A2 không được áp dụng, vì thiếu fact: M1
@@ -146,86 +146,11 @@ RU66: PR3, P6 -> A17 không được áp dụng, vì thiếu fact: PR3
 RU67: PR3, P7 -> A17 không được áp dụng, vì thiếu fact: PR3
 RU68: PR3, P8 -> A17 không được áp dụng, vì thiếu fact: PR3
 RU69: PR3 -> A18 không được áp dụng, vì thiếu fact: PR3
-RU70: PR4 -> A19 áp dụng, cập nhật is_fired. Facts P7, SY11, SY6, SY13, SY15, SY8, SY4, PR2, SY21, SY20, PR4 => A10, A11, A19
------------ITERATION 4------------
-RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: M1
-RU37: M1, P2 -> A2 không được áp dụng, vì thiếu fact: M1
-RU38: M1, P3 -> A3 không được áp dụng, vì thiếu fact: M1
-RU39: M1, P4 -> A4 không được áp dụng, vì thiếu fact: M1
-RU40: M1, P5 -> A5 không được áp dụng, vì thiếu fact: M1
-RU41: M1, P6 -> A6 không được áp dụng, vì thiếu fact: M1
-RU42: M1, P7 -> A7 không được áp dụng, vì thiếu fact: M1
-RU43: M1, P8 -> A8 không được áp dụng, vì thiếu fact: M1
-RU44: PR2, P1 -> A9 không được áp dụng, vì thiếu fact: P1
-RU45: PR2, P2 -> A9 không được áp dụng, vì thiếu fact: P2
-RU46: PR2, P3 -> A9 không được áp dụng, vì thiếu fact: P3
-RU47: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: P4
-RU48: PR2, P5 -> A10 bỏ qua vì vế phải đã tồn tại trong facts.
-RU49: PR2, P6 -> A10 bỏ qua vì vế phải đã tồn tại trong facts.
-RU50: PR2, P7 -> A10 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU51: PR2 -> A11 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU52: PR2, P8 -> A12 không được áp dụng, vì thiếu fact: P8
-RU53: PR3, P1 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU54: PR3, P2 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU55: PR3, P3 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU56: PR3, P4 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU57: PR3, P5 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU58: PR3, P6 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU59: PR3, P7 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU60: PR3, P8 -> A15 không được áp dụng, vì thiếu fact: PR3
-RU61: PR3, P1 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU62: PR3, P2 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU63: PR3, P3 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU64: PR3, P4 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU65: PR3, P5 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU66: PR3, P6 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU67: PR3, P7 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU68: PR3, P8 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU69: PR3 -> A18 không được áp dụng, vì thiếu fact: PR3
-RU70: PR4 -> A19 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU71: PR4, P5 -> A20 không được áp dụng, vì thiếu fact: P5
-RU72: PR4, P6 -> A20 không được áp dụng, vì thiếu fact: P6
-RU73: PR4, P7 -> A20 áp dụng, cập nhật is_fired. Facts P7, SY11, SY6, SY13, SY15, SY8, SY4, PR2, SY21, SY20, PR4 => A10, A11, A19, A20
------------ITERATION 5------------
-RU36: M1, P1 -> A1 không được áp dụng, vì thiếu fact: M1
-RU37: M1, P2 -> A2 không được áp dụng, vì thiếu fact: M1
-RU38: M1, P3 -> A3 không được áp dụng, vì thiếu fact: M1
-RU39: M1, P4 -> A4 không được áp dụng, vì thiếu fact: M1
-RU40: M1, P5 -> A5 không được áp dụng, vì thiếu fact: M1
-RU41: M1, P6 -> A6 không được áp dụng, vì thiếu fact: M1
-RU42: M1, P7 -> A7 không được áp dụng, vì thiếu fact: M1
-RU43: M1, P8 -> A8 không được áp dụng, vì thiếu fact: M1
-RU44: PR2, P1 -> A9 không được áp dụng, vì thiếu fact: P1
-RU45: PR2, P2 -> A9 không được áp dụng, vì thiếu fact: P2
-RU46: PR2, P3 -> A9 không được áp dụng, vì thiếu fact: P3
-RU47: PR2, P4 -> A9 không được áp dụng, vì thiếu fact: P4
-RU48: PR2, P5 -> A10 bỏ qua vì vế phải đã tồn tại trong facts.
-RU49: PR2, P6 -> A10 bỏ qua vì vế phải đã tồn tại trong facts.
-RU50: PR2, P7 -> A10 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU51: PR2 -> A11 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU52: PR2, P8 -> A12 không được áp dụng, vì thiếu fact: P8
-RU53: PR3, P1 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU54: PR3, P2 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU55: PR3, P3 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU56: PR3, P4 -> A13 không được áp dụng, vì thiếu fact: PR3
-RU57: PR3, P5 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU58: PR3, P6 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU59: PR3, P7 -> A14 không được áp dụng, vì thiếu fact: PR3
-RU60: PR3, P8 -> A15 không được áp dụng, vì thiếu fact: PR3
-RU61: PR3, P1 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU62: PR3, P2 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU63: PR3, P3 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU64: PR3, P4 -> A16 không được áp dụng, vì thiếu fact: PR3
-RU65: PR3, P5 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU66: PR3, P6 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU67: PR3, P7 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU68: PR3, P8 -> A17 không được áp dụng, vì thiếu fact: PR3
-RU69: PR3 -> A18 không được áp dụng, vì thiếu fact: PR3
-RU70: PR4 -> A19 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU71: PR4, P5 -> A20 bỏ qua vì vế phải đã tồn tại trong facts.
-RU72: PR4, P6 -> A20 bỏ qua vì vế phải đã tồn tại trong facts.
-RU73: PR4, P7 -> A20 bỏ qua vì cờ is_fired đã được đánh dấu.
-RU74: PR4, P8 -> A20 bỏ qua vì vế phải đã tồn tại trong facts.
+RU70: PR4 -> A19 không được áp dụng, vì thiếu fact: PR4
+RU71: PR4, P5 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU72: PR4, P6 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU73: PR4, P7 -> A20 không được áp dụng, vì thiếu fact: PR4
+RU74: PR4, P8 -> A20 không được áp dụng, vì thiếu fact: PR4
 RU75: PR5 -> A21 không được áp dụng, vì thiếu fact: PR5
 RU76: PR5, P1 -> A22 không được áp dụng, vì thiếu fact: PR5
 RU77: PR5, P2 -> A22 không được áp dụng, vì thiếu fact: PR5
@@ -264,5 +189,5 @@ RU109: ST2 -> A35 không được áp dụng, vì thiếu fact: ST2
 RU110: ST3 -> A36 không được áp dụng, vì thiếu fact: ST3
 RU111: ST5 -> A37 không được áp dụng, vì thiếu fact: ST5
 ----------------------------------------------------
-Facts sau khi suy diễn: P7, SY11, SY6, SY13, SY15, SY8, SY4, PR2, SY21, SY20, PR4, A10, A11, A19, A20
-Những luật được áp dụng: RU50, RU51, RU70, RU73
+Facts sau khi suy diễn: P7, SY11, SY6, SY13, SY15, SY9, SY4, PR2, A10, A11
+Những luật được áp dụng: RU50, RU51
