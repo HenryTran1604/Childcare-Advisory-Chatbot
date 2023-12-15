@@ -47,9 +47,9 @@ class DAO:
         return self.find_all_rules(1)
     
     
-    def find_all_symtoms_by_reason(self, reason_id):
+    def find_all_symtoms_by_problem(self, problem_id):
         stm = 'SELECT DISTINCT id_antecedent_fact FROM inference WHERE id_consequent_fact=%s'
-        self.cursor.execute(stm, (reason_id,))
+        self.cursor.execute(stm, (problem_id,))
         result = self.cursor.fetchall()
         return set(x[0] for x in result)
     
