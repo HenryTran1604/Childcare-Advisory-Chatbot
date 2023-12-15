@@ -160,7 +160,7 @@ class Main:
         predict_problems = self.predict()
         # print(self.negative_facts)
         bc = BackwardChaining()
-        asked_symptoms = set() # những triệu chứng đã hỏi
+        asked_symptoms = set() # những triệu chứng đã hỏi ở phần backward
         for i, problem in enumerate(predict_problems):
             result = bc.backward_chaining(self.current_facts, problem, self.bc_rules) 
             if result:
