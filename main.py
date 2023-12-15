@@ -74,12 +74,12 @@ class Main:
         question = "Con của bạn cao bao nhiêu cm?"
         # con tôi nặng xx kg và cao yy cm
         chatbot_print(question)
-        self.height = numeric_response('Vui lòng nhập lại chiều cao (0 - 120) cm!')
+        self.height = numeric_response(120, 'Vui lòng nhập lại chiều cao (0 - 120) cm!')
         
     def weight_question(self):
         question = 'Con của bạn nặng bao nhiêu kg?'
         chatbot_print(question)
-        self.weight = numeric_response('Vui lòng nhập lại cân nặng (0 - 34) kg!')
+        self.weight = numeric_response(34, 'Vui lòng nhập lại cân nặng (0 - 34) kg!')
 
     def __ask(self, question_keys):
         ans = []
@@ -126,11 +126,6 @@ class Main:
         digest_symptom_keys = ["SY16", "SY17", "SY18", "SY33"]
         self.__ask(digest_symptom_keys)
 
-    def respiratory_question(self):
-        chatbot_print("Chúng tôi muốn biết tình trạng về **HÔ HẤP** hiện tại của con bạn")
-        respiratory_symp_keys = ["SY19", "SY29"]
-        self.__ask(respiratory_symp_keys)
-
     def vision_question(self):
         chatbot_print("Chúng tôi muốn biết tình trạng về **THỊ GIÁC** hiện tại của con bạn")
         vision_symp_keys = ["SY27", "SY28", "SY30", "SY15"]
@@ -141,7 +136,6 @@ class Main:
         self.skin_question()
         self.sleep_question()
         self.digest_question()
-        # self.respiratory_question()
         self.vision_question()
         fc = ForwardChaining()
         facts = fc.forward_chaining(self.current_facts, self.fc_rules_pr)[2]
@@ -216,7 +210,7 @@ class Main:
         advices = sorted([x for x in result if x[0] == 'A'], key=lambda x : int(x[1:])) # lọc ra lời khuyên
         problems = sorted([x for x in result if x[:2] == 'PR']) # lọc ra vấn đề đã chắc chắn
         if self.status:
-            chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status]}')            
+            chatbot_print(f'Chúng tôi đã có thông tin giới tính, chiều cao, cân nặng của con bạn. Theo đánh giá, con bạn đang trong tình trạng {self.facts[self.status].upper()}')            
         if len(advices):
             if self.status == None:
                 chatbot_print(f'Con bạn đang gặp các vấn đề: {", ".join(self.facts[problem] for problem in problems)}')

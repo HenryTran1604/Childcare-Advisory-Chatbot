@@ -57,20 +57,26 @@ def age_response():
         try:
             age = int(response.strip())
             user_print(age)
+            if age < 0 or age > 24:
+                chatbot_print('Ngoài phạm vi hệ thống, vui lòng nhập lại tháng tuổi [0; 24]')
+                continue
             break
         except:
             user_print(response)
-            chatbot_print('Vui lòng nhập lại tháng tuổi [0; 24]')
+            chatbot_print('Vui lòng nhập lại THÁNG tuổi [0; 24]')
     return age
 
 
-def numeric_response(error):
+def numeric_response(limit, error):
     num = 0.0
     while True:
         response = input().strip()
         try:
             num = float(response)
             user_print(response)
+            if num < 0 or num > limit:
+                chatbot_print(error)
+                continue
             break
         except:
             user_print(response)
