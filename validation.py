@@ -67,14 +67,14 @@ def age_response():
     return age
 
 
-def numeric_response(limit, error):
+def numeric_response(min, limit, error):
     num = 0.0
     while True:
         response = input().strip()
         try:
             num = float(response)
             user_print(response)
-            if num < 0 or num > limit:
+            if num <= min or num > limit:
                 chatbot_print(error)
                 continue
             break

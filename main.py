@@ -74,12 +74,12 @@ class Main:
         question = "Con của bạn cao bao nhiêu cm? (0; 120)"
         # con tôi nặng xx kg và cao yy cm
         chatbot_print(question)
-        self.height = numeric_response(120, 'Vui lòng nhập lại chiều cao (0 - 120) cm!')
+        self.height = numeric_response(20, 120, 'Vui lòng nhập lại chiều cao (20 - 120) cm!')
         
     def weight_question(self):
         question = 'Con của bạn nặng bao nhiêu kg? (0; 34)'
         chatbot_print(question)
-        self.weight = numeric_response(34, 'Vui lòng nhập lại cân nặng (0 - 34) kg!')
+        self.weight = numeric_response(0, 34, 'Vui lòng nhập lại cân nặng (0 - 34) kg!')
 
     def __ask(self, question_keys):
         ans = []
@@ -226,8 +226,9 @@ class Main:
         chatbot_print('Bạn muốn nhận lời khuyên từ mục nào?')
         chatbot_print2('1. Tư vấn dinh dưỡng và vận động')
         chatbot_print2('2. Tư vấn về các vấn đề sức khỏe')
-        ans = input()
+        
         while True:
+            ans = input()
             if ans == '1':
                 user_print('Tôi muốn tư vấn về dinh dưỡng và vận động')
                 self.gender_question()
