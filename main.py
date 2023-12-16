@@ -71,13 +71,13 @@ class Main:
         self.current_facts.append(period)
 
     def height_question(self): # câu hỏi về chiều cao
-        question = "Con của bạn cao bao nhiêu cm?"
+        question = "Con của bạn cao bao nhiêu cm? (0; 120)"
         # con tôi nặng xx kg và cao yy cm
         chatbot_print(question)
         self.height = numeric_response(120, 'Vui lòng nhập lại chiều cao (0 - 120) cm!')
         
     def weight_question(self):
-        question = 'Con của bạn nặng bao nhiêu kg?'
+        question = 'Con của bạn nặng bao nhiêu kg? (0; 34)'
         chatbot_print(question)
         self.weight = numeric_response(34, 'Vui lòng nhập lại cân nặng (0 - 34) kg!')
 

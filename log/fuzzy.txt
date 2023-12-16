@@ -1,4 +1,4 @@
-Giới tính, tháng tuổi, cân nặng, chiều cao: (1, 24, 34.0, 120.0)
-Giá trị hàm thanh viên weight: (low, mid, height) = (-> 0 0 1)
+Giới tính, tháng tuổi, cân nặng, chiều cao: (1, 10, 7.0, 100.0)
+Giá trị hàm thanh viên weight: (low, mid, height) = (-> 1 0 0)
 Giá trị hàm thanh viên height: (low, mid, height) = (-> 0 0 1)
-Tỷ lệ của [ST1, ST2, ST3, ST4, ST5] = [0, 0, 0, 0, 1]
+Tỷ lệ của [ST1, ST2, ST3, ST4, ST5] = [1, 0, 0, 0, 0]

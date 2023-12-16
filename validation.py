@@ -37,11 +37,11 @@ def gender_response():
     gender= None
     while True:
         response = input().strip()
-        if response == '1':
+        if response == '1' or response == 'nam' or response == 'trai':
             user_print('Nam')
             gender = 1
             break
-        elif response == '0':
+        elif response == '0' or response == 'nữ' or response == 'gái':
             user_print('Nữ')
             gender = 0
             break
